@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './scripts/scripts'
 import './App.css';
 import { numToLet } from './scripts/scripts';
