@@ -1,24 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
+import './scripts/scripts'
 import './App.css';
+import { numToLet } from './scripts/scripts';
 
 function App() {
+
+  console.log(numToLet(4, false))
+  console.log(numToLet([1,2,3,4,5,6,4,4,4,4,4,2], true))
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>MusiqTools</h1>
+      <p>A straightforward app designed to make music theory less of a headache.</p>
     </div>
   );
 }

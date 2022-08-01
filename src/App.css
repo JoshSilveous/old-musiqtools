@@ -1,38 +1,25 @@
+* {
+ 
+  /*  Get rid of all default padding and margins  */
+  margin: 0;
+  padding: 0;
+
+  /*  Global color scheme variables  */
+  --color-background: #2c3f43;
+  --color-text: #faecac;
+  --color-accent1: #87c6bb;
+  --color-accent2: #e16853;
+
+  background-color: var(--color-background);
+  font-family: 'Inter';
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  color: var(--color-text);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
 }
