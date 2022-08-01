@@ -1,19 +1,28 @@
 import React from 'react';
-import './scripts/scripts'
 import './App.css';
 import { numToLet } from './scripts/scripts';
+import ScaleMenu from './components/Menu';
 
 function App() {
 
-  console.log(numToLet(4, false))
-  console.log(numToLet([1,2,3,4,5,6,4,4,4,4,4,2], true))
+    // State used throughout the whole application to decide if it should
+    // display sharp or flat symbols
+    const [isSharp, setIsSharp] = React.useState(false)
 
-  return (
-    <div className="App">
-      <h1>MusiqTools</h1>
-      <p>A straightforward app designed to make music theory less of a headache.</p>
-    </div>
-  );
+    var reference: string[] = ['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G'];
+    if (isSharp) {
+        reference = ['G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G'];
+    }
+
+    // console.log(numToLet([1, 2, 3]))
+    return (
+        <div className="App">
+            <h1>MusiqTools</h1>
+            <p>A straightforward app designed to make music theory less of a headache.</p>
+            <ScaleMenu />
+        </div>
+    );
 }
 
 export default App;
+export var reference: string[];
