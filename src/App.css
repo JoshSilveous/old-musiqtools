@@ -1,25 +1,69 @@
 * {
- 
-  /*  Get rid of all default padding and margins  */
-  margin: 0;
-  padding: 0;
 
-  /*  Global color scheme variables  */
-  --color-background: #2c3f43;
-  --color-text: #faecac;
-  --color-accent1: #87c6bb;
-  --color-accent2: #e16853;
+    /*  Get rid of all default padding and margins  */
+    margin: 0;
+    padding: 0;
 
-  background-color: var(--color-background);
-  font-family: 'Inter';
+    /*  Global color scheme variables  */
+    --color-background: #2c3f43;
+    --color-text: #faecac;
+    --color-accent1: #87c6bb;
+    --color-accent1-lighter: #badbd6;
+    --color-accent2: #e16853;
+
+    font-family: 'Inter';
+}
+
+:root {
+    background-color: var(--color-background);
 }
 
 .App {
-  color: var(--color-text);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 30px;
-  padding: 30px;
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+}
+
+.scale-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 25px;
+}
+
+.scale-menu__dropdown {
+    border-radius: 30px;
+    padding: 3px 6px;
+    font-size: 20px;
+    background-color: var(--color-accent1);
+    color: var(--color-background);
+    font-weight: 700;
+    width: 75px;
+}
+
+.scale-menu__dropdown:hover {
+    cursor: pointer;
+}
+
+.scale-menu__dropdown:focus {
+    background-color: red;
+    border-radius: 30px;
+}
+
+.jselect {
+    font-family: 'Inter';
+    background-color: var(--color-accent1);
+    color: var(--color-background);
+    font-weight: 700;
+    font-size: 20px;
+    transition: background-color 200ms linear;
+}
+
+.jselect:hover {
+    cursor: pointer;
+    background-color: var(--color-accent1-lighter);
 }
