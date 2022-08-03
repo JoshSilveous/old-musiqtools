@@ -1,3 +1,4 @@
+import { text } from 'node:stream/consumers';
 import React from 'react';
 import { rootCertificates } from 'tls';
 import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg';
@@ -6,7 +7,8 @@ export default function JSelect(props: any) {
 
     const defaultValue = 4;
 
-    const className = "jselect";
+    const primaryColor = '#87c6bb'; //only takes hex
+    const textColor = '#2c3f43';
 
     const [currentOption, setCurrentOption] = React.useState(defaultValue);
 
@@ -32,28 +34,62 @@ export default function JSelect(props: any) {
     const buttonstyle: React.CSSProperties = {
         display: 'flex',
         alignItems: 'center',
-        gap: '20px',
-        padding: '5px 15px',
-        borderRadius: '20px'
+        gap: '20px'
     };
 
+    const [tempState, setTempState] = React.useState(primaryColor)
     const menustyle: React.CSSProperties = {
-        backgroundColor: 'inherit'
+        backgroundColor: tempState, //primaryColor
+        color: textColor,
+        fontWeight: '700',
+        fontSize: '20px',
+        padding: '5px 15px',
+        borderRadius: '20px',
+        cursor: 'pointer'
     };
 
-    const itemstyle: React.CSSProperties = {
+    function onHover(): void {
+        let rgbvalue = hexToRGBArray(primaryColor) // left off here
 
-    };
+    }
+    function onHoverExit(): void {
 
+    }
+
+    function hexToRGBArray(hex: string): number[] { // Converts a hex color to [R,G,B]
+        let rgbVals: number[] = [];
+        for (let i = 0; i < 3; i++) {
+            let rgb = parseInt(hex[i * 2 + 1] + hex[i * 2 + 2], 16)
+            if (rgb > 255) { rgb = 255 }
+            rgbVals.push(rgb)
+        }
+        return rgbVals
+    }
+    function lightenColor(colorIn: string): string { // Takes a string and outputs a lighter version of it
+        let srcRGBVals = hexToRGBArray(colorIn)
+        let newRGBVals: number[] = [];
+        for (let i = 0; i < 3; i++) {
+            let newRGB = srcRGBVals[i] + 40
+            if (newRGB > 255) { newRGB = 255 }
+            newRGBVals.push(newRGB)
+        }
+        return (`rgb(${newRGBVals[0]}, ${newRGBVals[1]}, ${newRGBVals[2]})`)
+    }
+
+    // I'm gonna have to use CSS-IN-JS completely for this.
+    // Since the menu's background is one div, I'll just change the font color (+ weight?) on hover.
+    // I'll probably have to use state
     return (
-        <div>
+        <div style={menustyle}
+            onMouseEnter={() => setTempState(lightenColor(primaryColor))}
+            onMouseLeave={() => setTempState(primaryColor)}
+        >
             <div
-                className={className}
-                style={buttonstyle}
                 onClick={() => setDropDownOpen(prev => !prev)}
+                style={buttonstyle}
             >
                 {options.findIndex(item => item.value === currentOption)}
-                <div style={{
+                <div style={{ // Maybe make it a hollow triangle with rounded edges?
                     height: '15px',
                     display: 'flex',
                     transform: dropDownOpen ? '' : 'rotate(-180deg)',
@@ -62,21 +98,22 @@ export default function JSelect(props: any) {
                     <DropDownArrow fill="currentColor" />
                 </div>
             </div>
-
-            <div style={menustyle}>
-                <div style={itemstyle}>Ab</div>
-                <div style={itemstyle}>A</div>
-                <div style={itemstyle}>Bb</div>
-                <div style={itemstyle}>B</div>
-                <div style={itemstyle}>C</div>
-                <div style={itemstyle}>Db</div>
-                <div style={itemstyle}>D</div>
-                <div style={itemstyle}>Eb</div>
-                <div style={itemstyle}>E</div>
-                <div style={itemstyle}>F</div>
-                <div style={itemstyle}>Fb</div>
-                <div style={itemstyle}>G</div>
+            {/* Should add a divider here */}
+            <div>
+                <div>Ab</div>
+                <div>A</div>
+                <div>Bb</div>
+                <div>B</div>
+                <div>C</div>
+                <div>Db</div>
+                <div>D</div>
+                <div>Eb</div>
+                <div>E</div>
+                <div>F</div>
+                <div>Fb</div>
+                <div>G</div>
             </div>
+
         </div>
     );
 }

@@ -48,7 +48,7 @@ export default function ScaleMenu() {
 
             {/* 
                     Might want to create a custom dropdown component. Might look like this:
-                    <JSelect options={[item1,item2,...]} defaultValue={value} className="dropdown-class" returnFunc={setXState}/>
+                    <JSelect options={[item1,item2,...]} defaultValue={value} primaryColor='' textColor='' returnFunc={setXState}/>
             */}
             <JSelect />
 
