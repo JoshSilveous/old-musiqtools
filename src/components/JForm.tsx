@@ -1,15 +1,18 @@
 import React from 'react';
+import { rootCertificates } from 'tls';
+import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg';
 
 export default function JSelect(props: any) {
 
-    const defaultValue = 4
+    const defaultValue = 4;
 
-    const className = "jselect"
+    const className = "jselect";
 
-    const [currentOption, setCurrentOption] = React.useState(defaultValue)
+    const [currentOption, setCurrentOption] = React.useState(defaultValue);
 
+    const [dropDownOpen, setDropDownOpen] = React.useState(false);
 
-    interface Option { value: any, label: string }
+    interface Option { value: any, label: string; }
     const options: Option[] = [
         { value: 0, label: 'Ab' },
         { value: 1, label: 'A' },
@@ -23,30 +26,43 @@ export default function JSelect(props: any) {
         { value: 9, label: 'F' },
         { value: 10, label: 'Gb' },
         { value: 11, label: 'G' }
-    ]
+    ];
 
     // Styles
     const buttonstyle: React.CSSProperties = {
-        display: 'inline',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '20px',
         padding: '5px 15px',
         borderRadius: '20px'
-    }
+    };
 
     const menustyle: React.CSSProperties = {
         backgroundColor: 'inherit'
-    }
+    };
 
     const itemstyle: React.CSSProperties = {
 
-    }
-
+    };
 
     return (
         <div>
-            <div className={className} style={buttonstyle}>       {/* Menu toggle */}
+            <div
+                className={className}
+                style={buttonstyle}
+                onClick={() => setDropDownOpen(prev => !prev)}
+            >
                 {options.findIndex(item => item.value === currentOption)}
-                {/* put a lottie here for the arrow icon, which can be triggered via react */}
+                <div style={{
+                    height: '15px',
+                    display: 'flex',
+                    transform: dropDownOpen ? '' : 'rotate(-180deg)',
+                    transition: 'transform 250ms ease',
+                }}>
+                    <DropDownArrow fill="currentColor" />
+                </div>
             </div>
+
             <div style={menustyle}>
                 <div style={itemstyle}>Ab</div>
                 <div style={itemstyle}>A</div>
@@ -62,5 +78,5 @@ export default function JSelect(props: any) {
                 <div style={itemstyle}>G</div>
             </div>
         </div>
-    )
+    );
 }

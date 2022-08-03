@@ -7,7 +7,7 @@ function App() {
 
     // State used throughout the whole application to decide if it should
     // display sharp or flat symbols
-    const [isSharp, setIsSharp] = React.useState(false)
+    const [isSharp, setIsSharp] = React.useState(false);
 
     var reference: string[] = ['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G'];
     if (isSharp) {
