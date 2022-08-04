@@ -1,61 +1,68 @@
-import { text } from 'node:stream/consumers';
 import React from 'react';
-import { rootCertificates } from 'tls';
 import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg';
 
-export default function JSelect(props: any) {
 
-    const defaultValue = 4;
 
-    const primaryColor = '#87c6bb'; //only takes hex
-    const textColor = '#2c3f43';
+interface Option { value: any, label: string; }
+interface JSelectProps {
+    options: Option[],
+    defaultIndex: number,
+    primaryColor: string,
+    textColor: string,
+    width: string,
+    returnFunction: Function
+}
 
-    const [currentOption, setCurrentOption] = React.useState(defaultValue);
+export default function JSelect({ options, defaultIndex, primaryColor, textColor, width, returnFunction }: JSelectProps) {
 
+    // States
+    const [currentOption, setCurrentOption] = React.useState(defaultIndex);
     const [dropDownOpen, setDropDownOpen] = React.useState(false);
+    const [hoverState, setHoverState] = React.useState(primaryColor)
+    const [optionsHover, setOptionsHover] = React.useState(generateOptionsBoolArray)
+    const inputRef = React.useRef<any>(null);
 
-    interface Option { value: any, label: string; }
-    const options: Option[] = [
-        { value: 0, label: 'Ab' },
-        { value: 1, label: 'A' },
-        { value: 2, label: 'Bb' },
-        { value: 3, label: 'B' },
-        { value: 4, label: 'C' },
-        { value: 5, label: 'Db' },
-        { value: 6, label: 'D' },
-        { value: 7, label: 'Eb' },
-        { value: 8, label: 'E' },
-        { value: 9, label: 'F' },
-        { value: 10, label: 'Gb' },
-        { value: 11, label: 'G' }
-    ];
+    // Variables used to get div size
+    const divSizeClosed = 24 // ! This means the function only works if font-size is 24px and it doesn't wrap
+    const divSizeOpened = (divSizeClosed * (options.length + 1) + 11.5) // This assumes all lines don't wrap
+
+    // Sends update whenever an option is picked
+    React.useEffect(() => {
+        returnFunction(currentOption)
+    }, [currentOption])
+
 
     // Styles
     const buttonstyle: React.CSSProperties = {
         display: 'flex',
         alignItems: 'center',
-        gap: '20px'
+        justifyContent: 'flex-start',
+        width: width
     };
-
-    const [tempState, setTempState] = React.useState(primaryColor)
     const menustyle: React.CSSProperties = {
-        backgroundColor: tempState, //primaryColor
+        backgroundColor: hoverState, //primaryColor
         color: textColor,
+        height: 'min-content',
         fontWeight: '700',
         fontSize: '20px',
         padding: '5px 15px',
         borderRadius: '20px',
-        cursor: 'pointer'
+        transition: 'background-color 0.2s ease, max-height 0.5s ease',
+        maxHeight: dropDownOpen ? divSizeOpened : divSizeClosed,
+        cursor: 'pointer',
+        overflow: 'hidden',
+        userSelect: 'none'
     };
 
-    function onHover(): void {
-        let rgbvalue = hexToRGBArray(primaryColor) // left off here
 
+    // Helper Functions
+    function onHover(): void {
+        setHoverState(lightenColor(primaryColor))
     }
     function onHoverExit(): void {
-
+        setHoverState(primaryColor)
+        setOptionsHover(generateOptionsBoolArray)
     }
-
     function hexToRGBArray(hex: string): number[] { // Converts a hex color to [R,G,B]
         let rgbVals: number[] = [];
         for (let i = 0; i < 3; i++) {
@@ -75,43 +82,61 @@ export default function JSelect(props: any) {
         }
         return (`rgb(${newRGBVals[0]}, ${newRGBVals[1]}, ${newRGBVals[2]})`)
     }
+    function toggleDropDown(): void {
+        setDropDownOpen(prev => !prev)
+    }
+    function generateOptionsBoolArray(): Boolean[] {
+        let boolArray: Boolean[] = [];
+        options.forEach(() => boolArray.push(false))
+        return boolArray
+    }
+    function makeThisHover(index: number): void {
+        setOptionsHover(prev => {
+            return prev.map((item, itemIndex) => itemIndex === index ? true : false)
+        })
+    }
 
-    // I'm gonna have to use CSS-IN-JS completely for this.
-    // Since the menu's background is one div, I'll just change the font color (+ weight?) on hover.
-    // I'll probably have to use state
+
+    // Maps out all the options in the dropdown menu
+    const optionElements: any = options.map((item, index) => {
+        return (
+            <div
+                key={index}
+                onClick={() => setCurrentOption(item.value)}
+                onMouseEnter={() => makeThisHover(index)}
+                style={{
+                    color: optionsHover[index] ? lightenColor(textColor) : textColor
+                }}
+            >{item.label}</div>)
+    })
+
+
     return (
         <div style={menustyle}
-            onMouseEnter={() => setTempState(lightenColor(primaryColor))}
-            onMouseLeave={() => setTempState(primaryColor)}
+            onMouseEnter={onHover}
+            onMouseLeave={onHoverExit}
+            onClick={toggleDropDown}
+
+
         >
             <div
-                onClick={() => setDropDownOpen(prev => !prev)}
                 style={buttonstyle}
+                ref={inputRef}
             >
-                {options.findIndex(item => item.value === currentOption)}
+                {options[options.findIndex(item => item.value === currentOption)].label}
                 <div style={{ // Maybe make it a hollow triangle with rounded edges?
                     height: '15px',
                     display: 'flex',
                     transform: dropDownOpen ? '' : 'rotate(-180deg)',
                     transition: 'transform 250ms ease',
+                    marginLeft: 'auto'
                 }}>
                     <DropDownArrow fill="currentColor" />
                 </div>
             </div>
-            {/* Should add a divider here */}
+            <div style={{ height: '1.5px', backgroundColor: textColor, margin: '5px 0px' }} />
             <div>
-                <div>Ab</div>
-                <div>A</div>
-                <div>Bb</div>
-                <div>B</div>
-                <div>C</div>
-                <div>Db</div>
-                <div>D</div>
-                <div>Eb</div>
-                <div>E</div>
-                <div>F</div>
-                <div>Fb</div>
-                <div>G</div>
+                {optionElements}
             </div>
 
         </div>
