@@ -1,9 +1,9 @@
-import React from 'react';
-import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg';
+import React from 'react'
+import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg'
 
 
 
-interface Option { value: any, label: string; }
+interface Option { value: any, label: string }
 interface JSelectProps {
     options: Option[],
     defaultIndex: number,
@@ -16,11 +16,11 @@ interface JSelectProps {
 export default function JSelect({ options, defaultIndex, primaryColor, textColor, width, returnFunction }: JSelectProps) {
 
     // States
-    const [currentOption, setCurrentOption] = React.useState(defaultIndex);
-    const [dropDownOpen, setDropDownOpen] = React.useState(false);
+    const [currentOption, setCurrentOption] = React.useState(defaultIndex)
+    const [dropDownOpen, setDropDownOpen] = React.useState(false)
     const [hoverState, setHoverState] = React.useState(primaryColor)
     const [optionsHover, setOptionsHover] = React.useState(generateOptionsBoolArray)
-    const inputRef = React.useRef<any>(null);
+    const inputRef = React.useRef<any>(null)
 
     // Variables used to get div size
     const divSizeClosed = 24 // ! This means the function only works if font-size is 24px and it doesn't wrap
@@ -29,7 +29,7 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
     // Sends update whenever an option is picked
     React.useEffect(() => {
         returnFunction(currentOption)
-    }, [currentOption])
+    }, [currentOption, returnFunction])
 
 
     // Styles
@@ -38,7 +38,7 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         alignItems: 'center',
         justifyContent: 'flex-start',
         width: width
-    };
+    }
     const menustyle: React.CSSProperties = {
         backgroundColor: hoverState, //primaryColor
         color: textColor,
@@ -46,13 +46,13 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         fontWeight: '700',
         fontSize: '20px',
         padding: '5px 15px',
-        borderRadius: '20px',
+        borderRadius: '18px',
         transition: 'background-color 0.2s ease, max-height 0.5s ease',
         maxHeight: dropDownOpen ? divSizeOpened : divSizeClosed,
         cursor: 'pointer',
         overflow: 'hidden',
         userSelect: 'none'
-    };
+    }
 
 
     // Helper Functions
@@ -64,7 +64,7 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         setOptionsHover(generateOptionsBoolArray)
     }
     function hexToRGBArray(hex: string): number[] { // Converts a hex color to [R,G,B]
-        let rgbVals: number[] = [];
+        let rgbVals: number[] = []
         for (let i = 0; i < 3; i++) {
             let rgb = parseInt(hex[i * 2 + 1] + hex[i * 2 + 2], 16)
             if (rgb > 255) { rgb = 255 }
@@ -74,7 +74,7 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
     }
     function lightenColor(colorIn: string): string { // Takes a string and outputs a lighter version of it
         let srcRGBVals = hexToRGBArray(colorIn)
-        let newRGBVals: number[] = [];
+        let newRGBVals: number[] = []
         for (let i = 0; i < 3; i++) {
             let newRGB = srcRGBVals[i] + 40
             if (newRGB > 255) { newRGB = 255 }
@@ -86,7 +86,7 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         setDropDownOpen(prev => !prev)
     }
     function generateOptionsBoolArray(): Boolean[] {
-        let boolArray: Boolean[] = [];
+        let boolArray: Boolean[] = []
         options.forEach(() => boolArray.push(false))
         return boolArray
     }
@@ -128,7 +128,7 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
                     height: '15px',
                     display: 'flex',
                     transform: dropDownOpen ? '' : 'rotate(-180deg)',
-                    transition: 'transform 250ms ease',
+                    transition: 'transform 500ms ease',
                     marginLeft: 'auto'
                 }}>
                     <DropDownArrow fill="currentColor" />
@@ -140,5 +140,5 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
             </div>
 
         </div>
-    );
+    )
 }

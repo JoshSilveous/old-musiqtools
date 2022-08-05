@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 import JSelect from './JForm'
 
 
 export default function ScaleMenu() {
-    interface Option { value: any, label: string; }
+    interface Option { value: any, label: string }
     const letteroptions: Option[] = [
         { value: 0, label: 'Ab' },
         { value: 1, label: 'A' },
@@ -17,7 +17,7 @@ export default function ScaleMenu() {
         { value: 9, label: 'F' },
         { value: 10, label: 'Gb' },
         { value: 11, label: 'G' }
-    ];
+    ]
 
     const modeoptions: Option[] = [
         { value: 0, label: 'Ionian (Major)' },

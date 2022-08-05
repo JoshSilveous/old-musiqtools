@@ -4,17 +4,17 @@ import { reference } from '../App'
 
 console.log(reference) // currently returns undefined
 
-function numToLet(input: number): string;
-function numToLet(input: number[]): string[];
+function numToLet(input: number): string
+function numToLet(input: number[]): string[]
 
 function numToLet(input: number | number[]): string | string[] {
 
     if (typeof input === 'number') {
-        return reference[input];
+        return reference[input]
     }
 
-    return input.map(item => numToLet(item));
+    return input.map(item => numToLet(item))
 }
 
 
-export { numToLet };
+export { numToLet }
