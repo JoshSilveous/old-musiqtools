@@ -28,41 +28,21 @@
     padding: 30px;
 }
 
-.scale-menu {
+.scale-menu,
+.issharp-menu {
     display: flex;
     gap: 20px;
     font-size: 25px;
 }
 
-.scale-menu__dropdown {
-    border-radius: 30px;
-    padding: 3px 6px;
-    font-size: 20px;
-    background-color: var(--color-accent1);
-    color: var(--color-background);
-    font-weight: 700;
-    width: 75px;
+.issharp-and-scale-menus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
 }
 
-.scale-menu__dropdown:hover {
-    cursor: pointer;
-}
-
-.scale-menu__dropdown:focus {
-    background-color: red;
-    border-radius: 30px;
-}
-
-.jselect {
-    font-family: 'Inter';
-    background-color: var(--color-accent1);
-    color: var(--color-background);
-    font-weight: 700;
-    font-size: 20px;
-    transition: background-color 200ms linear;
-}
-
-.jselect:hover {
-    cursor: pointer;
-    background-color: var(--color-accent1-lighter);
+.issharp-menu__checkbox-container {
+    margin: 4px
 }

@@ -1,6 +1,26 @@
 import React from 'react'
 import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg'
+import { ReactComponent as Checkmark } from '../assets/Checkmark.svg'
 
+function hexToRGBArray(hex: string): number[] { // Converts a hex color to [R,G,B]
+    let rgbVals: number[] = []
+    for (let i = 0; i < 3; i++) {
+        let rgb = parseInt(hex[i * 2 + 1] + hex[i * 2 + 2], 16)
+        if (rgb > 255) { rgb = 255 }
+        rgbVals.push(rgb)
+    }
+    return rgbVals
+}
+function lightenColor(colorIn: string): string { // Takes a string and outputs a lighter version of it
+    let srcRGBVals = hexToRGBArray(colorIn)
+    let newRGBVals: number[] = []
+    for (let i = 0; i < 3; i++) {
+        let newRGB = srcRGBVals[i] + 40
+        if (newRGB > 255) { newRGB = 255 }
+        newRGBVals.push(newRGB)
+    }
+    return (`rgb(${newRGBVals[0]}, ${newRGBVals[1]}, ${newRGBVals[2]})`)
+}
 
 
 interface Option { value: any, label: string }
@@ -63,25 +83,6 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         setHoverState(primaryColor)
         setOptionsHover(generateOptionsBoolArray)
     }
-    function hexToRGBArray(hex: string): number[] { // Converts a hex color to [R,G,B]
-        let rgbVals: number[] = []
-        for (let i = 0; i < 3; i++) {
-            let rgb = parseInt(hex[i * 2 + 1] + hex[i * 2 + 2], 16)
-            if (rgb > 255) { rgb = 255 }
-            rgbVals.push(rgb)
-        }
-        return rgbVals
-    }
-    function lightenColor(colorIn: string): string { // Takes a string and outputs a lighter version of it
-        let srcRGBVals = hexToRGBArray(colorIn)
-        let newRGBVals: number[] = []
-        for (let i = 0; i < 3; i++) {
-            let newRGB = srcRGBVals[i] + 40
-            if (newRGB > 255) { newRGB = 255 }
-            newRGBVals.push(newRGB)
-        }
-        return (`rgb(${newRGBVals[0]}, ${newRGBVals[1]}, ${newRGBVals[2]})`)
-    }
     function toggleDropDown(): void {
         setDropDownOpen(prev => !prev)
     }
@@ -116,8 +117,6 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
             onMouseEnter={onHover}
             onMouseLeave={onHoverExit}
             onClick={toggleDropDown}
-
-
         >
             <div
                 style={buttonstyle}
@@ -139,6 +138,76 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
                 {optionElements}
             </div>
 
+        </div>
+    )
+}
+
+
+interface JCheckboxProps {
+    defaultState: boolean,
+    primaryColor: string,
+    backgroundColor: string,
+    returnFunction: Function
+}
+export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnFunction }: JCheckboxProps) {
+
+
+
+    const [isChecked, setIsChecked] = React.useState(defaultState)
+    const [isHovered, setIsHovered] = React.useState(false)
+
+    React.useEffect(() => {
+        returnFunction(isChecked)
+    }, [isChecked])
+
+    function determineBackgroundColor(): any {
+        let currentColor: string;
+        if (isChecked) {
+            if (isHovered) {
+                currentColor = lightenColor(primaryColor)
+            } else {
+                currentColor = primaryColor
+            }
+        } else {
+            if (isHovered) {
+                currentColor = lightenColor(backgroundColor)
+            } else {
+                currentColor = backgroundColor
+            }
+        }
+        return currentColor
+    }
+
+    const checkboxStyle: React.CSSProperties = {
+        backgroundColor: determineBackgroundColor(),
+        width: '14px',
+        height: '14px',
+        display: 'flex',
+        borderRadius: '5px',
+        border: `solid 6px ${primaryColor}`,
+        cursor: 'pointer',
+        transition: 'background-color 0.2s ease'
+    }
+
+    function onHover() {
+        setIsHovered(prev => !prev)
+    }
+    function onHoverExit() {
+        setIsHovered(prev => !prev)
+    }
+
+    return (
+        <div
+            style={checkboxStyle}
+            onMouseEnter={onHover}
+            onMouseLeave={onHoverExit}
+            onClick={() => setIsChecked(prev => !prev)}
+        >
+            <div style={{
+                display: 'flex',
+            }}>
+                {/* Checkmark goes here */}
+            </div>
         </div>
     )
 }

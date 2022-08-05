@@ -17,7 +17,7 @@ function App() {
     return (
         <div className="App">
             <h1>MusiqTools</h1>
-            <p>A straightforward app designed to make music theory less of a headache.</p>
+            <p>A straightforward app designed to make producing music less of a headache.</p>
             <ScaleMenu />
         </div>
     )

@@ -1,5 +1,6 @@
 import React from 'react'
 import JSelect from './JForm'
+import { JCheckbox } from './JForm'
 
 
 export default function ScaleMenu() {
@@ -32,35 +33,42 @@ export default function ScaleMenu() {
     const [currentLetter, setCurrentLetter] = React.useState(4)
     const [currentMode, setCurrentMode] = React.useState(0)
 
-    console.log('currentLetter:', letteroptions[currentLetter].label, 'currentMode:', modeoptions[currentMode].label)
+    const [temporaryIsSharp, setTemporaryIsSharp] = React.useState(false)
+
+    console.log('currentLetter:', letteroptions[currentLetter].label, 'currentMode:', modeoptions[currentMode].label, 'isSharp:', temporaryIsSharp)
     return (
-        <div className="scale-menu">
+        <div className="issharp-and-scale-menus">
+            <div className="issharp-menu">
+                Display Sharps (#) instead of Flats (b)?
+                <div className="issharp-menu__checkbox-container">
+                    <JCheckbox
+                        defaultState={false}
+                        primaryColor='#87c6bb'
+                        backgroundColor='#2c3f43'
+                        returnFunction={(value: boolean) => setTemporaryIsSharp(value)}
+                    />
+                </div>
+            </div>
+            <div className="scale-menu">
+                Scale:
+                <JSelect
+                    options={letteroptions}
+                    defaultIndex={4}
+                    primaryColor='#87c6bb'
+                    textColor='#2c3f43'
+                    width='70px'
+                    returnFunction={(value: number) => setCurrentLetter(value)}
+                />
+                <JSelect
+                    options={modeoptions}
+                    defaultIndex={0}
+                    primaryColor='#e16853'
+                    textColor='#2c3f43'
+                    width='180px'
+                    returnFunction={(value: number) => setCurrentMode(value)}
+                />
 
-            {/*     Elements:
-                        - Select Letter (Dropdown)          scale-menu__letter
-                        - Select Mode (Dropdown)            scale-menu__mode
-                        - Show Sharps or Flats (Toggle)     scale-menu__is-sharp
-                                                            ...not sure if I even need class names for these yet
-            */}
-
-
-            <JSelect
-                options={letteroptions}
-                defaultIndex={4}
-                primaryColor='#87c6bb'
-                textColor='#2c3f43'
-                width='70px'
-                returnFunction={(value: number) => setCurrentLetter(value)}
-            />
-            <JSelect
-                options={modeoptions}
-                defaultIndex={0}
-                primaryColor='#e16853'
-                textColor='#2c3f43'
-                width='180px'
-                returnFunction={(value: number) => setCurrentMode(value)}
-            />
-
+            </div>
         </div>
     )
 }
