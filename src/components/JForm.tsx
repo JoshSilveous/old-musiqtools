@@ -1,6 +1,6 @@
 import React from 'react'
 import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg'
-import { ReactComponent as Checkmark } from '../assets/Checkmark.svg'
+import { ReactComponent as CheckmarkActive } from '../assets/checkbox_active.svg'
 
 function hexToRGBArray(hex: string): number[] { // Converts a hex color to [R,G,B]
     let rgbVals: number[] = []
@@ -49,7 +49,8 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
     // Sends update whenever an option is picked
     React.useEffect(() => {
         returnFunction(currentOption)
-    }, [currentOption, returnFunction])
+        // eslint-disable-next-line
+    }, [currentOption])
 
 
     // Styles
@@ -158,10 +159,11 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
 
     React.useEffect(() => {
         returnFunction(isChecked)
+        // eslint-disable-next-line
     }, [isChecked])
 
     function determineBackgroundColor(): any {
-        let currentColor: string;
+        let currentColor: string
         if (isChecked) {
             if (isHovered) {
                 currentColor = lightenColor(primaryColor)
@@ -190,10 +192,10 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
     }
 
     function onHover() {
-        setIsHovered(prev => !prev)
+        setIsHovered(true)
     }
     function onHoverExit() {
-        setIsHovered(prev => !prev)
+        setIsHovered(false)
     }
 
     return (
@@ -204,9 +206,9 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
             onClick={() => setIsChecked(prev => !prev)}
         >
             <div style={{
-                display: 'flex',
+                display: 'flex'
             }}>
-                {/* Checkmark goes here */}
+                <CheckmarkActive style={{ stroke: backgroundColor }} />
             </div>
         </div>
     )
