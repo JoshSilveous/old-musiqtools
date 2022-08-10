@@ -58,7 +58,8 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        width: width
+        width: width,
+        whiteSpace: 'nowrap'
     }
     const menustyle: React.CSSProperties = {
         backgroundColor: hoverState, //primaryColor
@@ -127,14 +128,20 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
                 <div style={{ // Maybe make it a hollow triangle with rounded edges?
                     height: '15px',
                     display: 'flex',
-                    transform: dropDownOpen ? '' : 'rotate(-180deg)',
-                    transition: 'transform 500ms ease',
+                    justifySelf: 'left',
+                    justifyContent: 'right',
                     marginLeft: 'auto'
                 }}>
-                    <DropDownArrow fill="currentColor" />
+                    <DropDownArrow style={{
+                        transition: 'transform 500ms ease',
+                        transform: dropDownOpen ? '' : 'rotate(-180deg)'
+
+                    }} fill="currentColor" />
                 </div>
             </div>
+
             <div style={{ height: '1.5px', backgroundColor: textColor, margin: '5px 0px' }} />
+
             <div>
                 {optionElements}
             </div>
@@ -186,7 +193,7 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
         height: '14px',
         display: 'flex',
         borderRadius: '5px',
-        border: `solid 6px ${primaryColor}`,
+        border: `solid 6px ${isHovered ? lightenColor(primaryColor) : primaryColor}`, // There's a weird delay, I should re-do the hover logic so that the whole box highlights on hover
         cursor: 'pointer',
         transition: 'background-color 0.2s ease'
     }
@@ -213,3 +220,4 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
         </div>
     )
 }
+
