@@ -1,9 +1,14 @@
 import React from 'react'
 import JSelect from './JForm'
 import { JCheckbox } from './JForm'
+import type { ScaleContextProviderType } from '../ScaleContext'
 
+type ScaleMenuProps = {
+    context: ScaleContextProviderType
+}
 
-export default function ScaleMenu() {
+export default function ScaleMenu({ context }: ScaleMenuProps) {
+    console.log(context)
     interface Option { value: any, label: string }
     const letteroptions: Option[] = [
         { value: 0, label: 'Ab' },
