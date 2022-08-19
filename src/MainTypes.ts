@@ -16,3 +16,15 @@ export type ScaleContextProviderType = {
     scaleLetOptions: string[],
     scaleModeOptions: string[]
 }
+export type ThemeValuesType = {
+    background: string,
+    text: string,
+    accent1: string,
+    accent2: string
+}
+
+export type ThemeType = {
+    themeValues: ThemeValuesType,
+    lightenedThemeValues: ThemeValuesType,
+    setThemeValues: React.Dispatch<React.SetStateAction<ThemeValuesType>>
+}

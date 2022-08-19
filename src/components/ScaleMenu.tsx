@@ -1,10 +1,10 @@
 import JSelect from '../libraries/JForm'
 import { JCheckbox } from '../libraries/JForm'
-import { ScaleContextPropsType } from './ComponentsTypes'
+import { ScaleContextPropsType, ScaleThemePropsType } from './ComponentsTypes'
 
 
 
-export default function ScaleMenu({ context }: ScaleContextPropsType) {
+export default function ScaleMenu({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {
 
     function updateScaleContext(valueName: string, value: number | boolean) {
         context.setScaleSettings(prev => {
@@ -19,8 +19,8 @@ export default function ScaleMenu({ context }: ScaleContextPropsType) {
                 <div className="issharp-menu__checkbox-container">
                     <JCheckbox
                         defaultState={false}
-                        primaryColor='#87c6bb'
-                        backgroundColor='#2c3f43'
+                        primaryColor={theme.themeValues.accent1}
+                        backgroundColor={theme.themeValues.background}
                         returnFunction={(value: boolean) => updateScaleContext('isSharp', value)}
                     />
                 </div>
@@ -33,8 +33,8 @@ export default function ScaleMenu({ context }: ScaleContextPropsType) {
                     <JSelect
                         options={context.scaleLetOptions}
                         defaultIndex={4}
-                        primaryColor='#87c6bb'
-                        textColor='#2c3f43'
+                        primaryColor={theme.themeValues.accent1}
+                        textColor={theme.themeValues.background}
                         width='70px'
                         returnFunction={(value: number) => updateScaleContext('scale', value)}
                     />
@@ -46,8 +46,8 @@ export default function ScaleMenu({ context }: ScaleContextPropsType) {
                     <JSelect
                         options={context.scaleModeOptions}
                         defaultIndex={0}
-                        primaryColor='#e16853'
-                        textColor='#2c3f43'
+                        primaryColor={theme.themeValues.accent2}
+                        textColor={theme.themeValues.background}
                         width='180px'
                         returnFunction={(value: number) => updateScaleContext('mode', value)}
                     />

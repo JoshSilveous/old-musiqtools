@@ -1,16 +1,16 @@
-import { ScaleContextPropsType } from "../ComponentsTypes"
+import { ScaleContextPropsType, ScaleThemePropsType } from "../ComponentsTypes"
 
-function ScaleInfoScale({ context }: ScaleContextPropsType) {
+function ScaleInfoScale({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {
     const scaleLetDisplay = context.scaleLet.map(item => {
         return (<div style={{
-            backgroundColor: '#faecac',
+            backgroundColor: theme.lightenedThemeValues.background,
             width: '50px',
             height: '50px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: '5px',
-            color: '#2c3f43',
+            color: theme.themeValues.text,
             fontWeight: '700'
         }}>{item}</div>)
     })
