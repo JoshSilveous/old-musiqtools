@@ -1,6 +1,7 @@
 import React from 'react'
 import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg'
 import { ReactComponent as CheckmarkActive } from '../assets/checkbox_active.svg'
+import { JCheckboxProps, JSelectProps } from './LibrariesTypes'
 
 function hexToRGBArray(hex: string): number[] { // Converts a hex color to [R,G,B]
     let rgbVals: number[] = []
@@ -22,15 +23,6 @@ function lightenColor(colorIn: string): string { // Takes a string and outputs a
     return (`rgb(${newRGBVals[0]}, ${newRGBVals[1]}, ${newRGBVals[2]})`)
 }
 
-
-interface JSelectProps {
-    options: string[],
-    defaultIndex: number,
-    primaryColor: string,
-    textColor: string,
-    width: string,
-    returnFunction: Function
-}
 
 export default function JSelect({ options, defaultIndex, primaryColor, textColor, width, returnFunction }: JSelectProps) {
 
@@ -72,7 +64,8 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         maxHeight: dropDownOpen ? divSizeOpened : divSizeClosed,
         cursor: 'pointer',
         overflow: 'hidden',
-        userSelect: 'none'
+        userSelect: 'none',
+        position: 'absolute'
     }
 
 
@@ -150,12 +143,7 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
 }
 
 
-interface JCheckboxProps {
-    defaultState: boolean,
-    primaryColor: string,
-    backgroundColor: string,
-    returnFunction: Function
-}
+
 export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnFunction }: JCheckboxProps) {
 
 

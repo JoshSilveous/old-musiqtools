@@ -1,45 +1,14 @@
 import React from 'react'
+import { ScaleContextProviderProps, ScaleContextProviderType, scaleSettingsType } from './MainTypes'
 
 
 
 const { Provider, Consumer } = React.createContext<ScaleContextProviderType>({} as ScaleContextProviderType)
 
 
-type ScaleContextProviderProps = {
-    children: JSX.Element | JSX.Element[]
-}
 
-type scaleSettingsType = {
-    scale: number,
-    mode: number,
-    isSharp: boolean
-}
-
-export type ScaleContextProviderType = {
-    scaleNum: number[]
-    scaleLet: string[]
-    scaleSettings: scaleSettingsType,
-    setScaleSettings: React.Dispatch<React.SetStateAction<scaleSettingsType>>,
-    scaleLetOptions: string[],
-    scaleModeOptions: string[]
-}
 
 function ScaleContextProvider({ children }: ScaleContextProviderProps): JSX.Element {
-
-    /*  Variables and Functions
-        LOCAL
-          * genScaleNum         Generates the numeric scale
-          * genScaleLet         converts numeric scale to letters
-          * scaleNum            stores the current scale in numeric format                      e.x. [2,4,6,7,9,11,0]
-          * scaleLet            scaleNum in letter format                                       e.x. ['Bb', 'C', 'D']
-          * scaleSettings       the current scale                                               e.x. {scale: 4, mode: 2, isSharp: true}
-          * setScaleSettings()  changes the scale itself
-          * scalemodeOptions         an array with all different modes. Exported for lists           e.x. ['Ionian', 'Dorian', ...]
-                                    This is so more modes can be added later
-        EXPORTING
-            scaleNum, scaleLet, scaleSettings, setScaleSettings, modeOptions
-    */
-
 
     const scaleDefaultSettings: scaleSettingsType = { scale: 4, mode: 0, isSharp: false }
 
