@@ -23,9 +23,8 @@ function lightenColor(colorIn: string): string { // Takes a string and outputs a
 }
 
 
-interface Option { value: any, label: string }
 interface JSelectProps {
-    options: Option[],
+    options: string[],
     defaultIndex: number,
     primaryColor: string,
     textColor: string,
@@ -105,12 +104,12 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         return (
             <div
                 key={index}
-                onClick={() => setCurrentOption(item.value)}
+                onClick={() => setCurrentOption(index)}
                 onMouseEnter={() => makeThisHover(index)}
                 style={{
                     color: optionsHover[index] ? lightenColor(textColor) : textColor
                 }}
-            >{item.label}</div>)
+            >{item}</div>)
     })
 
 
@@ -124,7 +123,7 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
                 style={buttonstyle}
                 ref={inputRef}
             >
-                {options[options.findIndex(item => item.value === currentOption)].label}
+                {options[currentOption]}
                 <div style={{ // Maybe make it a hollow triangle with rounded edges?
                     height: '15px',
                     display: 'flex',
