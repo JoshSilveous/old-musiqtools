@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScaleContextProviderProps, ScaleContextProviderType, scaleSettingsType } from './MainTypes'
+import { ScaleContextProviderProps, ScaleContextProviderType, scaleSettingsType } from './Main_Types'
 
 
 

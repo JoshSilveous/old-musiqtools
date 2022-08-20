@@ -1,6 +1,6 @@
 import JSelect from '../libraries/JForm'
 import { JCheckbox } from '../libraries/JForm'
-import { ScaleContextPropsType, ScaleThemePropsType } from './ComponentsTypes'
+import { ScaleContextPropsType, ScaleThemePropsType } from './Components_Types'
 
 
 
@@ -12,11 +12,24 @@ export default function ScaleMenu({ context, theme }: ScaleContextPropsType & Sc
         })
     }
 
+    const scaleMenuSingleStyle: React.CSSProperties = {
+        display: 'flex',
+        gap: '20px',
+        fontSize: '25px'
+    }
+    const scaleMenuAllStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '20px'
+    }
+
     return (
-        <div className="issharp-and-scale-menus">
-            <div className="issharp-menu">
+        <div style={scaleMenuAllStyle}>
+            <div style={scaleMenuSingleStyle}>
                 Display Sharps (#) instead of Flats (b)?
-                <div className="issharp-menu__checkbox-container">
+                <div style={{ margin: '4px' }}>
                     <JCheckbox
                         defaultState={false}
                         primaryColor={theme.themeValues.accent1}
@@ -25,7 +38,7 @@ export default function ScaleMenu({ context, theme }: ScaleContextPropsType & Sc
                     />
                 </div>
             </div>
-            <div className="scale-menu">
+            <div style={scaleMenuSingleStyle}>
                 Scale:
                 <div style={{
                     width: '70px'
@@ -40,9 +53,7 @@ export default function ScaleMenu({ context, theme }: ScaleContextPropsType & Sc
                     />
                 </div>
                 <div style={{ width: '20px' }}></div>
-                <div style={{
-                    width: '180px'
-                }}>
+                <div style={{ width: '180px' }}>
                     <JSelect
                         options={context.scaleModeOptions}
                         defaultIndex={0}

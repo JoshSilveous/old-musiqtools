@@ -1,5 +1,6 @@
 import { ScaleContextConsumer } from "../ScaleContext"
-import { ScaleThemePropsType } from "./ComponentsTypes"
+import { ScaleThemePropsType } from "./Components_Types"
+import ScaleInfoChords from "./ScaleInfoComponents/ScaleInfoChords"
 import ScaleInfoScale from "./ScaleInfoComponents/ScaleInfoScale"
 
 function ScaleInfo({ theme }: ScaleThemePropsType) {
@@ -8,7 +9,10 @@ function ScaleInfo({ theme }: ScaleThemePropsType) {
     return (
         <ScaleContextConsumer>
             {context => (
-                <ScaleInfoScale context={context} theme={theme} />
+                <>
+                    <ScaleInfoScale context={context} theme={theme} />
+                    <ScaleInfoChords context={context} theme={theme} />
+                </>
             )}
         </ScaleContextConsumer>
 

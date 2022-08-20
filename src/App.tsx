@@ -1,10 +1,9 @@
-import './App.css'
 import ScaleInfo from './components/ScaleInfo'
 import ScaleMenu from './components/ScaleMenu'
 import { ScaleContextConsumer } from './ScaleContext'
 import { useState } from 'react'
-import { lightenColor } from './libraries/JFormFunctions'
-import { ThemeType, ThemeValuesType } from './MainTypes'
+import { lightenColor } from './libraries/JForm_Functions'
+import { ThemeType, ThemeValuesType } from './Main_Types'
 
 function App() {
 
@@ -16,12 +15,12 @@ function App() {
     }
 
     const theme2: ThemeValuesType = {
-        background: '#fcd2b7',
-        text: '#1b1212',
-        accent1: '#fffefe',
-        accent2: '#eb2522'
+        background: '#FFD670',
+        text: '#e07046',
+        accent1: '#FF70A6',
+        accent2: '#70D6FF'
     }
-    const [themeValues, setThemeValues] = useState<ThemeValuesType>(theme1)
+    const [themeValues, setThemeValues] = useState<ThemeValuesType>(theme2)
     const lightenedThemeValues: ThemeValuesType = {
         background: lightenColor(themeValues.background),
         text: lightenColor(themeValues.text),
@@ -33,8 +32,19 @@ function App() {
 
     const theme: ThemeType = { themeValues, lightenedThemeValues, setThemeValues }
 
+    const appStyle: React.CSSProperties = {
+        color: themeValues.text,
+        backgroundColor: themeValues.background,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        gap: '30px',
+        minHeight: '100vh'
+    }
+
     return (
-        <div className="App" style={{ backgroundColor: themeValues.background }}>
+        <div style={appStyle}>
             <h1>MusiqTools</h1>
             <p>A straightforward app designed to make producing music less of a headache.</p>
             <ScaleContextConsumer>

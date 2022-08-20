@@ -1,4 +1,4 @@
-import { ScaleContextProviderType, ThemeType } from "../MainTypes"
+import { ScaleContextProviderType, ThemeType } from "../Main_Types"
 
 export type ScaleContextPropsType = {
     context: ScaleContextProviderType

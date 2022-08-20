@@ -1,8 +1,8 @@
 import React from 'react'
 import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg'
 import { ReactComponent as CheckmarkActive } from '../assets/checkbox_active.svg'
-import { JCheckboxProps, JSelectProps } from './LibrariesTypes'
-import { lightenColor } from './JFormFunctions'
+import { JCheckboxProps, JSelectProps } from './Libraries_Types'
+import { lightenColor } from './JForm_Functions'
 
 
 
