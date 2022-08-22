@@ -28,7 +28,8 @@
     display: block;
 }
 
-@media screen and (max-width: 768px) {
+/* Looks really weird on IOS*/
+@media screen and (max-width: 600px) {
     .JForm__menustyle {
         position: relative;
         top: 0;

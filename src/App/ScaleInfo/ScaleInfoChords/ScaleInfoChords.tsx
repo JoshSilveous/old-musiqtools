@@ -1,4 +1,4 @@
-import { ScaleContextPropsType, ScaleThemePropsType } from "../Components_Types"
+import { ScaleContextPropsType, ScaleThemePropsType } from "../../../global/Types"
 import { generateMajor7Chord, generateMinor7Chord, generateDiminishedChord, toRomanNumeral } from "./ScaleInfoChords_Functions"
 
 function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {

@@ -1,10 +1,10 @@
 import './App.css'
-import ScaleInfo from './components/ScaleInfo'
-import ScaleMenu from './components/ScaleMenu'
-import { ScaleContextConsumer } from './ScaleContext'
+import ScaleInfo from './ScaleInfo/ScaleInfo'
+import ScaleMenu from './ScaleMenu/ScaleMenu'
+import { ScaleContextConsumer } from '../global/ScaleContext'
 import { useState } from 'react'
-import { lightenColor } from './libraries/JForm_Functions'
-import { ThemeType, ThemeValuesType } from './Main_Types'
+import { lightenColor } from '../global/JForm/JForm_Functions'
+import { ThemeType, ThemeValuesType } from '../global/Types'
 
 function App() {
 

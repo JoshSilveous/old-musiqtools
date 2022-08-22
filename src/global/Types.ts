@@ -28,3 +28,11 @@ export type ThemeType = {
     lightenedThemeValues: ThemeValuesType,
     setThemeValues: React.Dispatch<React.SetStateAction<ThemeValuesType>>
 }
+
+export type ScaleContextPropsType = {
+    context: ScaleContextProviderType
+}
+
+export type ScaleThemePropsType = {
+    theme: ThemeType
+}

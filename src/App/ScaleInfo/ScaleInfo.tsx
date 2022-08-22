@@ -1,7 +1,7 @@
-import { ScaleContextConsumer } from "../ScaleContext"
-import { ScaleThemePropsType } from "./Components_Types"
-import ScaleInfoChords from "./ScaleInfoComponents/ScaleInfoChords"
-import ScaleInfoScale from "./ScaleInfoComponents/ScaleInfoScale"
+import { ScaleContextConsumer } from "../../global/ScaleContext"
+import { ScaleThemePropsType } from "../../global/Types"
+import ScaleInfoChords from "../ScaleInfo/ScaleInfoChords/ScaleInfoChords"
+import ScaleInfoScale from "../ScaleInfo/ScaleInfoScale/ScaleInfoScale"
 
 function ScaleInfo({ theme }: ScaleThemePropsType) {
 

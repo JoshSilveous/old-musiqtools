@@ -1,6 +1,5 @@
-import JSelect from '../libraries/JForm'
-import { JCheckbox } from '../libraries/JForm'
-import { ScaleContextPropsType, ScaleThemePropsType } from './Components_Types'
+import { JSelect, JCheckbox } from '../../global/JForm/JForm'
+import { ScaleContextPropsType, ScaleThemePropsType } from '../../global/Types'
 
 
 

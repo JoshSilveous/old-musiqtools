@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScaleContextProviderProps, ScaleContextProviderType, scaleSettingsType } from './Main_Types'
+import { ScaleContextProviderProps, ScaleContextProviderType, scaleSettingsType } from './Types'
 
 
 const { Provider, Consumer } = React.createContext<ScaleContextProviderType>({} as ScaleContextProviderType)

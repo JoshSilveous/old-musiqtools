@@ -1,4 +1,4 @@
-import { ScaleContextPropsType, ScaleThemePropsType } from "../Components_Types"
+import { ScaleContextPropsType, ScaleThemePropsType } from "../../../global/Types"
 
 function ScaleInfoScale({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {
 

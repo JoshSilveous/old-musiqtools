@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import App from './App'
+import App from './App/App'
 import reportWebVitals from './reportWebVitals'
-import { ScaleContextProvider } from './ScaleContext'
+import { ScaleContextProvider } from './global/ScaleContext'
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
