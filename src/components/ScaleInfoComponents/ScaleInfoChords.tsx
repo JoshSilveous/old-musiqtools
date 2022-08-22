@@ -3,14 +3,6 @@ import { generateMajor7Chord, generateMinor7Chord, generateDiminishedChord, toRo
 
 function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {
 
-    let CMaj = generateMajor7Chord(4).map(item => context.scaleLetOptions[item])
-    let AMin = generateMinor7Chord(1).map(item => context.scaleLetOptions[item])
-    let BDim = generateDiminishedChord(3).map(item => context.scaleLetOptions[item])
-
-    console.log('Major: ', CMaj)
-    console.log('Minor: ', AMin)
-    console.log('Diminished: ', BDim)
-
     let modeFormula: number[] = []
     /*      0 = Major
             1 = Minor
@@ -42,41 +34,36 @@ function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemeP
                 break
         }
 
-        const chordIndividualStyle: React.CSSProperties = {
-            padding: '10px',
-            width: '40px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '30px',
-            fontWeight: '700'
-        }
-
         let currentChordRoman: string = toRomanNumeral(index + 1)
         if (item !== 0) { currentChordRoman = currentChordRoman.toLowerCase() }
         if (item === 2) { currentChordRoman = currentChordRoman + '°' }
         return (
-            <div style={{
-                display: 'flex',
-                gap: '5px',
-                backgroundColor: theme.lightenedThemeValues.background,
-                borderRadius: '20px'
-
-            }}>
-                <div style={chordIndividualStyle}>
+            <div
+                className='scale-info__chord'
+                style={{
+                    backgroundColor: theme.lightenedThemeValues.background,
+                }}
+            >
+                <div className='scale-info__chord__item'>
                     {currentChordRoman}
                 </div>
-                <div style={{ ...chordIndividualStyle, width: '175px' }}>
+                <div
+                    className='scale-info__chord__item'
+                    style={{ width: '175px' }}
+                >
                     {chordType}
                 </div>
 
                 {/* Maps over each item in the chord */}
-                {chord.map(item => {
+                {chord.map((item, index) => {
                     return (
-                        <div style={{
-                            ...chordIndividualStyle,
-                            color: context.scaleNum.includes(item) ? theme.themeValues.accent2 : theme.themeValues.background
-                        }}>
+                        <div
+                            className='scale-info__chord__item'
+                            style={{
+                                color: context.scaleNum.includes(item) ? theme.themeValues.accent2 : theme.themeValues.background
+                            }}
+                            key={index}
+                        >
                             {context.scaleLetOptions[item]}
                         </div>)
                 })}

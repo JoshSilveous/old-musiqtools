@@ -1,0 +1,45 @@
+.JForm__buttonstyle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+}
+
+.JForm__menustyle {
+    height: min-content;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 5px 15px;
+    border-radius: 18px;
+    transition: background-color 0.2s ease, max-height 0.5s ease;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+    position: absolute;
+    border: none;
+    appearance: none;
+
+}
+
+.JForm-mobile {
+    display: none;
+}
+.JForm-desktop {
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .JForm__menustyle {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .JForm-mobile {
+        display: block;
+    }
+    .JForm-desktop {
+        display: none;
+    }
+}

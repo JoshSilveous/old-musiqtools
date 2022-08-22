@@ -1,4 +1,5 @@
 import React from 'react'
+import './JForm.css'
 import { ReactComponent as DropDownArrow } from '../assets/DropDownArrow.svg'
 import { ReactComponent as CheckmarkActive } from '../assets/checkbox_active.svg'
 import { JCheckboxProps, JSelectProps } from './Libraries_Types'
@@ -28,27 +29,11 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
 
 
     // Styles
-    const buttonstyle: React.CSSProperties = {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        width: width,
-        whiteSpace: 'nowrap'
-    }
+
     const menustyle: React.CSSProperties = {
         backgroundColor: hoverState, //primaryColor
         color: textColor,
-        height: 'min-content',
-        fontWeight: '700',
-        fontSize: '20px',
-        padding: '5px 15px',
-        borderRadius: '18px',
-        transition: 'background-color 0.2s ease, max-height 0.5s ease',
-        maxHeight: dropDownOpen ? divSizeOpened : divSizeClosed,
-        cursor: 'pointer',
-        overflow: 'hidden',
-        userSelect: 'none',
-        position: 'absolute'
+        maxHeight: dropDownOpen ? divSizeOpened : divSizeClosed
     }
 
 
@@ -74,9 +59,8 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
         })
     }
 
-
-    // Maps out all the options in the dropdown menu
-    const optionElements: any = options.map((item, index) => {
+    // Maps out all the options in the dropdown menu for DESKTOP
+    const optionElements = options.map((item, index) => {
         return (
             <div
                 key={index}
@@ -88,40 +72,63 @@ export default function JSelect({ options, defaultIndex, primaryColor, textColor
             >{item}</div>)
     })
 
+    // Maps out options for MOBILE
+    const mobileOptionElements = options.map((item, index) => {
+        return (
+            <option key={index} value={index} onClick={() => setCurrentOption(index)}>
+                {item}
+            </option>
+        )
+    })
 
     return (
-        <div style={menustyle}
-            onMouseEnter={onHover}
-            onMouseLeave={onHoverExit}
-            onClick={toggleDropDown}
-        >
+        <>
+
+            <select className="JForm__menustyle JForm-mobile" style={{
+                backgroundColor: primaryColor,
+                color: textColor
+            }} name="cars" id="cars">
+                {mobileOptionElements}
+            </select>
+
             <div
-                style={buttonstyle}
-                ref={inputRef}
+                className='JForm__menustyle JForm-desktop'
+                style={menustyle}
+                onMouseEnter={onHover}
+                onMouseLeave={onHoverExit}
+                onClick={toggleDropDown}
             >
-                {options[currentOption]}
-                <div style={{ // Maybe make it a hollow triangle with rounded edges?
-                    height: '15px',
-                    display: 'flex',
-                    justifySelf: 'left',
-                    justifyContent: 'right',
-                    marginLeft: 'auto'
-                }}>
-                    <DropDownArrow style={{
-                        transition: 'transform 500ms ease',
-                        transform: dropDownOpen ? '' : 'rotate(-180deg)'
+                <div
+                    className='JForm__buttonstyle'
+                    style={{
+                        width: width
+                    }}
+                    ref={inputRef}
+                >
+                    {options[currentOption]}
+                    <div style={{ // Maybe make it a hollow triangle with rounded edges?
+                        height: '15px',
+                        display: 'flex',
+                        justifySelf: 'left',
+                        justifyContent: 'right',
+                        marginLeft: 'auto'
+                    }}>
+                        <DropDownArrow style={{
+                            transition: 'transform 500ms ease',
+                            transform: dropDownOpen ? '' : 'rotate(-180deg)'
 
-                    }} fill="currentColor" />
+                        }} fill="currentColor" />
+                    </div>
                 </div>
+
+                <div style={{ height: '1.5px', backgroundColor: textColor, margin: '5px 0px' }} />
+
+                <div>
+                    {optionElements}
+                </div>
+
             </div>
-
-            <div style={{ height: '1.5px', backgroundColor: textColor, margin: '5px 0px' }} />
-
-            <div>
-                {optionElements}
-            </div>
-
-        </div>
+        </>
     )
 }
 

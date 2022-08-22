@@ -1,3 +1,4 @@
+import './App.css'
 import ScaleInfo from './components/ScaleInfo'
 import ScaleMenu from './components/ScaleMenu'
 import { ScaleContextConsumer } from './ScaleContext'
@@ -18,7 +19,7 @@ function App() {
         background: '#FFD670',
         text: '#e07046',
         accent1: '#FF70A6',
-        accent2: '#70D6FF'
+        accent2: '#5286d9'
     }
     const [themeValues, setThemeValues] = useState<ThemeValuesType>(theme2)
     const lightenedThemeValues: ThemeValuesType = {
@@ -29,22 +30,14 @@ function App() {
     }
 
 
-
     const theme: ThemeType = { themeValues, lightenedThemeValues, setThemeValues }
 
-    const appStyle: React.CSSProperties = {
-        color: themeValues.text,
-        backgroundColor: themeValues.background,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        gap: '30px',
-        minHeight: '100vh'
-    }
 
     return (
-        <div style={appStyle}>
+        <div className="app" style={{
+            color: themeValues.text,
+            backgroundColor: themeValues.background
+        }}>
             <h1>MusiqTools</h1>
             <p>A straightforward app designed to make producing music less of a headache.</p>
             <ScaleContextConsumer>
@@ -63,4 +56,3 @@ function App() {
 }
 
 export default App
-export var reference: string[]

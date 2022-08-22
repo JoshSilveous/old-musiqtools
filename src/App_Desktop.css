@@ -1,0 +1,78 @@
+@import url('./App_Mobile.css') screen and (max-width: 600px);
+
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: auto;
+    background-color: #FFD670;
+}
+
+    .scale-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        height: fit-content;
+        gap: 20px;
+        flex-wrap: wrap;
+
+    }
+        .scale-menu__row {
+            display: flex;
+            gap: 20px;
+            font-size: 25px;
+        }
+            .scale-menu__row__JCheckboxContainer {
+                margin: 4px;
+            }
+
+            .scale-menu__row__JSelectContainer-scale {
+                width: 70px;
+                height: fit-content;
+            }
+
+            .scale-menu__row__JSelectContainer-mode {
+                width: 180px; 
+                margin-left: 20px;
+            }
+
+        .scale-info__scale {
+            display: flex;
+            flex-direction: row;
+            font-size: 30px;
+            gap: 5px;
+            margin-top: 30px;
+        }
+            .scale-info__scale__item {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                font-weight: 700;
+            }
+
+    /*scale-info*/
+        .scale-info__chord {
+            display: flex;
+            gap: 5px;
+            border-radius: 20px;
+        }
+            .scale-info__chord__item {
+                padding: 10px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+                font-weight: 700;
+            }
+
+

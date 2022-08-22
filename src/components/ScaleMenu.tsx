@@ -12,24 +12,17 @@ export default function ScaleMenu({ context, theme }: ScaleContextPropsType & Sc
         })
     }
 
-    const scaleMenuSingleStyle: React.CSSProperties = {
-        display: 'flex',
-        gap: '20px',
-        fontSize: '25px'
-    }
-    const scaleMenuAllStyle: React.CSSProperties = {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '20px'
-    }
-
     return (
-        <div style={scaleMenuAllStyle}>
-            <div style={scaleMenuSingleStyle}>
+        <div className='scale-menu'>
+            <div className='scale-menu__row'>
                 Display Sharps (#) instead of Flats (b)?
-                <div style={{ margin: '4px' }}>
+                {//Temporary
+                }
+
+
+
+
+                <div className='scale-menu__row__JCheckboxContainer'>
                     <JCheckbox
                         defaultState={false}
                         primaryColor={theme.themeValues.accent1}
@@ -38,11 +31,9 @@ export default function ScaleMenu({ context, theme }: ScaleContextPropsType & Sc
                     />
                 </div>
             </div>
-            <div style={scaleMenuSingleStyle}>
+            <div className='scale-menu__row'>
                 Scale:
-                <div style={{
-                    width: '70px'
-                }}>
+                <div className="scale-menu__row__JSelectContainer-scale">
                     <JSelect
                         options={context.scaleLetOptions}
                         defaultIndex={4}
@@ -52,8 +43,7 @@ export default function ScaleMenu({ context, theme }: ScaleContextPropsType & Sc
                         returnFunction={(value: number) => updateScaleContext('scale', value)}
                     />
                 </div>
-                <div style={{ width: '20px' }}></div>
-                <div style={{ width: '180px' }}>
+                <div className="scale-menu__row__JSelectContainer-mode">
                     <JSelect
                         options={context.scaleModeOptions}
                         defaultIndex={0}

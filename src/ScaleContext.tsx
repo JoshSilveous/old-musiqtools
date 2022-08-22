@@ -2,22 +2,16 @@ import React from 'react'
 import { ScaleContextProviderProps, ScaleContextProviderType, scaleSettingsType } from './Main_Types'
 
 
-
 const { Provider, Consumer } = React.createContext<ScaleContextProviderType>({} as ScaleContextProviderType)
-
-
-
 
 function ScaleContextProvider({ children }: ScaleContextProviderProps): JSX.Element {
 
     const scaleDefaultSettings: scaleSettingsType = { scale: 4, mode: 0, isSharp: false }
-
     const [scaleSettings, setScaleSettings] = React.useState(scaleDefaultSettings)
 
     const scaleLetOptions = scaleSettings.isSharp ?
         ['G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G'] :
         ['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G']
-
     const scaleModeOptions =
         ['Ionian (Major)', 'Dorian', 'Phrygian', 'Lydian', 'Mixolydian', 'Aeolian (Minor)', 'Locrian']
 
