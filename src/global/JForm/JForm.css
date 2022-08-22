@@ -36,9 +36,13 @@
         left: 0;
         right: 0;
         bottom: 0;
+        width: 200px
     }
     .JForm-mobile {
         display: block;
+        background: url(../../assets/DropDownArrow.svg) no-repeat;
+        background-position: right 10px top 45%;
+        background-size: 15px;
     }
     .JForm-desktop {
         display: none;
