@@ -15,7 +15,6 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
     const [dropDownOpen, setDropDownOpen] = React.useState(false)
     const [hoverState, setHoverState] = React.useState(primaryColor)
     const [optionsHover, setOptionsHover] = React.useState(generateOptionsBoolArray)
-    const inputRef = React.useRef<any>(null)
 
     // Variables used to get div size
     const divSizeClosed = 24 // ! This means the function only works if font-size is 24px and it doesn't wrap
@@ -75,7 +74,11 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
     // Maps out options for MOBILE
     const mobileOptionElements = options.map((item, index) => {
         return (
-            <option key={index} value={index} onClick={() => setCurrentOption(index)}>
+            <option
+                key={index}
+                value={index}
+                onClick={() => setCurrentOption(index)}
+            >
                 {item}
             </option>
         )
@@ -83,13 +86,28 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
 
     return (
         <>
-
-            <select className="JForm__menustyle JForm-mobile" style={{
-                backgroundColor: primaryColor,
-                color: textColor
-            }} name="cars" id="cars">
-                {mobileOptionElements}
-            </select>
+            <div className="JForm-mobile" style={{ color: textColor }}>
+                <select
+                    className="JForm__menustyle JForm-mobile"
+                    style={{
+                        backgroundColor: primaryColor,
+                        color: textColor
+                    }}
+                    name="cars"
+                    id="cars"
+                    onFocus={() => setDropDownOpen(true)}
+                    onBlur={() => setDropDownOpen(false)}
+                >
+                    {mobileOptionElements}
+                </select>
+                <DropDownArrow
+                    fill="currentColor"
+                    className="JForm__DropDownArrow-mobile"
+                    style={{
+                        transform: dropDownOpen ? '' : 'rotate(-180deg)'
+                    }}
+                />
+            </div>
 
             <div
                 className='JForm__menustyle JForm-desktop'
@@ -103,16 +121,11 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
                     style={{
                         width: width
                     }}
-                    ref={inputRef}
                 >
                     {options[currentOption]}
-                    <div style={{ // Maybe make it a hollow triangle with rounded edges?
-                        height: '15px',
-                        display: 'flex',
-                        justifySelf: 'left',
-                        justifyContent: 'right',
-                        marginLeft: 'auto'
-                    }}>
+                    <div
+                        className="JForm__DropDownArrow-desktop"
+                    >
                         <DropDownArrow style={{
                             transition: 'transform 500ms ease',
                             transform: dropDownOpen ? '' : 'rotate(-180deg)'

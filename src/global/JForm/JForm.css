@@ -21,6 +21,23 @@
 
 }
 
+.JForm__DropDownArrow-mobile {
+    height: 15px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    transition: transform 500ms ease;
+    pointer-events: none;
+}
+
+.JForm__DropDownArrow-desktop {
+    height: 15px;
+    display: flex;
+    justify-self: left;
+    justify-content: right;
+    margin-left: auto;
+}
+
 .JForm-mobile {
     display: none;
 }
@@ -32,17 +49,10 @@
 @media screen and (max-width: 600px) {
     .JForm__menustyle {
         position: relative;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 200px
+        width: 200px;
     }
     .JForm-mobile {
         display: block;
-        background: url(../../assets/DropDownArrow.svg) no-repeat;
-        background-position: right 10px top 45%;
-        background-size: 15px;
     }
     .JForm-desktop {
         display: none;
