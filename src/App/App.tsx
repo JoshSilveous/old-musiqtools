@@ -39,7 +39,7 @@ function App() {
             backgroundColor: themeValues.background
         }}>
             <h1>MusiqTools</h1>
-            <p>A straightforward app designed to make producing music less of a headache.</p>
+            <p className="tagline">A straightforward app designed to make producing music less of a headache.</p>
             <ScaleContextConsumer>
                 {context => (
                     <>

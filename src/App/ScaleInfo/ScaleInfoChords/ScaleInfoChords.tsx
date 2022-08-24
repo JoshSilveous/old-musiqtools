@@ -39,17 +39,17 @@ function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemeP
         if (item === 2) { currentChordRoman = currentChordRoman + '°' }
         return (
             <div
+                key={index}
                 className='scale-info__chord'
                 style={{
                     backgroundColor: theme.lightenedThemeValues.background,
                 }}
             >
-                <div className='scale-info__chord__item'>
+                <div className='scale-info__chord__numeral'>
                     {currentChordRoman}
                 </div>
                 <div
-                    className='scale-info__chord__item'
-                    style={{ width: '175px' }}
+                    className='scale-info__chord__label'
                 >
                     {chordType}
                 </div>
@@ -72,7 +72,7 @@ function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemeP
     })
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+        <div className="scale-info__chords">
             {chords}
         </div>
     )

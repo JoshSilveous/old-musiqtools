@@ -39,3 +39,35 @@
     margin-left: 0;
 
 }
+
+.scale-info__scale {
+    width: 100%
+}
+.scale-info__chords {
+    width: 100%
+}
+.tagline {
+    text-align: center;
+}
+
+.scale-info__chord__numeral {
+    justify-content: left;
+    width: 45px;
+    flex-shrink: 0;
+    background-color: yellow;
+}
+
+.scale-info__chord__label {
+    background-color: green;
+    font-size: min(max(30px), 5vw);
+    justify-content: left;
+    padding: 0px;
+    width: 75px;
+    flex-shrink: 0;
+}
+
+.scale-info__chord__item {
+    background-color: red;
+    width: 25px;
+}
+/* Currently trying to get the grid to look good on mobile*/
