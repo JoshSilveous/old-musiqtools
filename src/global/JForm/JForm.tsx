@@ -84,11 +84,17 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
         )
     })
 
+    function selectSetCurrentOption(e: any) {
+        setCurrentOption(e.target.value)
+    }
+
     return (
         <>
             <div className="JForm-mobile" style={{ color: textColor }}>
                 <select
                     className="JForm__menustyle JForm-mobile"
+                    defaultValue={defaultIndex}
+                    onChange={selectSetCurrentOption}
                     style={{
                         backgroundColor: primaryColor,
                         color: textColor

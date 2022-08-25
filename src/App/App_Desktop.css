@@ -12,35 +12,38 @@
     background-color: #FFD670;
 }
 
-    .scale-menu {
+
+/*   ScaleMenu   */
+
+.scale-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 20px;
+    flex-wrap: wrap;
+
+}
+    .scale-menu__row {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: fit-content;
-        height: fit-content;
         gap: 20px;
-        flex-wrap: wrap;
-
+        font-size: 25px;
     }
-        .scale-menu__row {
-            display: flex;
-            gap: 20px;
-            font-size: 25px;
+        .scale-menu__row__JCheckboxContainer {
+            margin: 4px;
         }
-            .scale-menu__row__JCheckboxContainer {
-                margin: 4px;
-            }
 
-            .scale-menu__row__JSelectContainer-scale {
-                width: 70px;
-                height: fit-content;
-            }
+        .scale-menu__row__JSelectContainer-scale {
+            width: 70px;
+            height: fit-content;
+        }
 
-            .scale-menu__row__JSelectContainer-mode {
-                width: 180px; 
-                margin-left: 20px;
-            }
+        .scale-menu__row__JSelectContainer-mode {
+            width: 180px; 
+            margin-left: 20px;
+        }
 
         .scale-info__scale {
             display: flex;
@@ -59,27 +62,59 @@
                 font-weight: 700;
             }
 
-    /*scale-info*/
-        .scale-info__chord {
-            display: flex;
-            gap: 5px;
-            border-radius: 20px;
+            
+/*   ScaleInfo   */
+
+.scale-info__chord__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    font-size: 30px;
+    font-weight: 700;
+    width: 100%
+}
+    .scale-info__chord {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        max-width: 500px;
+        width: 100%;
+        overflow: auto;
+        border-radius: 20px;
+    }
+        .scale-info__chord__item {
+            flex-shrink: 0;
+            padding: 5px;
+            width: 40px;
+            text-align: center;
         }
-            .scale-info__chord__item, 
-            .scale-info__chord__numeral, 
+        .scale-info__chord__numeral {
+            flex-shrink: 0;
+            width: 50px;
+        }
+        .scale-info__chord__label {
+            width: 200px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: "-";
+            min-width: 60px;
+        }
+
+        /* To prevent overflow from looking weird on really small screens*/
+        @media screen and (max-width: 400px) {
             .scale-info__chord__label {
-                padding: 10px;
-                width: 40px;
-                display: flex;
-                align-items: center;
+                display: none;
+            }
+            .scale-info__chord {
                 justify-content: center;
-                font-size: 30px;
-                font-weight: 700;
             }
-
-
-            .scale-info__chords {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
+            .scale-info__chord__item, 
+            .scale-info__chord__numeral {
+                flex-shrink: 1;
             }
+        }

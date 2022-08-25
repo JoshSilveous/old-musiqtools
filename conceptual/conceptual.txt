@@ -1,0 +1,2 @@
+This is just an environment where I try out ideas before implementing them into the code itself.
+It's a means to help me learn how something works (usually css) before implementing

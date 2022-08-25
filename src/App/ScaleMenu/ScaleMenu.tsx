@@ -6,6 +6,7 @@ import { ScaleContextPropsType, ScaleThemePropsType } from '../../global/Types'
 export default function ScaleMenu({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {
 
     function updateScaleContext(valueName: string, value: number | boolean) {
+        console.log("Updating Scale Context with", valueName, "as", value)
         context.setScaleSettings(prev => {
             return { ...prev, [valueName]: value }
         })
@@ -15,11 +16,6 @@ export default function ScaleMenu({ context, theme }: ScaleContextPropsType & Sc
         <div className='scale-menu'>
             <div className='scale-menu__row'>
                 Display Sharps (#) instead of Flats (b)?
-                {//Temporary
-                }
-
-
-
 
                 <div className='scale-menu__row__JCheckboxContainer'>
                     <JCheckbox

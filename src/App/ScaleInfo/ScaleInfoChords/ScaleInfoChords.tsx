@@ -56,11 +56,18 @@ function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemeP
 
                 {/* Maps over each item in the chord */}
                 {chord.map((item, index) => {
+                    let currentColor = theme.themeValues.accent2
+                    if (!context.scaleNum.includes(item)) {
+                        currentColor = theme.themeValues.background
+                    }
+                    else if (index === 3) {
+                        currentColor = theme.themeValues.accent1
+                    }
                     return (
                         <div
                             className='scale-info__chord__item'
                             style={{
-                                color: context.scaleNum.includes(item) ? theme.themeValues.accent2 : theme.themeValues.background
+                                color: currentColor
                             }}
                             key={index}
                         >
@@ -72,7 +79,7 @@ function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemeP
     })
 
     return (
-        <div className="scale-info__chords">
+        <div className="scale-info__chord__container">
             {chords}
         </div>
     )
