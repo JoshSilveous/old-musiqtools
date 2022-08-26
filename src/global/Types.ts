@@ -3,7 +3,7 @@ export type ScaleContextProviderProps = {
 }
 
 export type scaleSettingsType = {
-    scale: number,
+    tonic: number,
     mode: number,
     isSharp: boolean
 }
