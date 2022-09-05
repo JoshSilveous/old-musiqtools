@@ -1,13 +1,13 @@
 import { JSelect, JCheckbox } from '../../global/JForm/JForm'
-import { ScaleContextPropsType, ScaleThemePropsType } from '../../global/Types'
+import { ScaleStatePropsType, ScaleThemePropsType } from '../../global/Types'
 
 
 
-export default function ScaleMenu({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {
+export default function ScaleMenu({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
 
     function updateScaleContext(valueName: string, value: number | boolean) {
         console.log("Updating Scale Context with", valueName, "as", value)
-        context.setScaleSettings(prev => {
+        scaleState.setScaleSettings(prev => {
             return { ...prev, [valueName]: value }
         })
     }
@@ -30,17 +30,17 @@ export default function ScaleMenu({ context, theme }: ScaleContextPropsType & Sc
                 Scale:
                 <div className="scale-menu__row__JSelectContainer-scale">
                     <JSelect
-                        options={context.scaleLetOptions}
+                        options={scaleState.scaleLetOptions}
                         defaultIndex={4}
                         primaryColor={theme.themeValues.accent1}
                         textColor={theme.themeValues.background}
                         width='70px'
-                        returnFunction={(value: number) => updateScaleContext('scale', value)}
+                        returnFunction={(value: number) => updateScaleContext('tonic', value)}
                     />
                 </div>
                 <div className="scale-menu__row__JSelectContainer-mode">
                     <JSelect
-                        options={context.scaleModeOptions}
+                        options={scaleState.scaleModeOptions}
                         defaultIndex={0}
                         primaryColor={theme.themeValues.accent2}
                         textColor={theme.themeValues.background}

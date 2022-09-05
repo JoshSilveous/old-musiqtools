@@ -3,16 +3,12 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App/App'
 import reportWebVitals from './reportWebVitals'
-import { ScaleContextProvider } from './global/ScaleContext'
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 )
 root.render(
-    <ScaleContextProvider>
-        <App />
-    </ScaleContextProvider>
-
+    <App />
 )
 
 // If you want to start measuring performance in your app, pass a function

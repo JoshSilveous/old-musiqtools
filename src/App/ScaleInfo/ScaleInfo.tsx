@@ -1,20 +1,15 @@
-import { ScaleContextConsumer } from "../../global/ScaleContext"
-import { ScaleThemePropsType } from "../../global/Types"
+import { ScaleStatePropsType, ScaleThemePropsType } from "../../global/Types"
 import ScaleInfoChords from "../ScaleInfo/ScaleInfoChords/ScaleInfoChords"
 import ScaleInfoScale from "../ScaleInfo/ScaleInfoScale/ScaleInfoScale"
 
-function ScaleInfo({ theme }: ScaleThemePropsType) {
+function ScaleInfo({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
 
     // Should display the full scale as well as chords
     return (
-        <ScaleContextConsumer>
-            {context => (
-                <>
-                    <ScaleInfoScale context={context} theme={theme} />
-                    <ScaleInfoChords context={context} theme={theme} />
-                </>
-            )}
-        </ScaleContextConsumer>
+        <>
+            <ScaleInfoScale scaleState={scaleState} theme={theme} />
+            <ScaleInfoChords scaleState={scaleState} theme={theme} />
+        </>
 
     )
 }

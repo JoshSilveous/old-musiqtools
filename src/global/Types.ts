@@ -8,7 +8,7 @@ export type scaleSettingsType = {
     isSharp: boolean
 }
 
-export type ScaleContextProviderType = {
+export type UseScaleType = {
     scaleNum: number[]
     scaleLet: string[]
     scaleSettings: scaleSettingsType,
@@ -29,8 +29,8 @@ export type ThemeType = {
     setThemeValues: React.Dispatch<React.SetStateAction<ThemeValuesType>>
 }
 
-export type ScaleContextPropsType = {
-    context: ScaleContextProviderType
+export type ScaleStatePropsType = {
+    scaleState: UseScaleType
 }
 
 export type ScaleThemePropsType = {

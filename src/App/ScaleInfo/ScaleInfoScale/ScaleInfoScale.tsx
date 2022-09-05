@@ -1,8 +1,8 @@
-import { ScaleContextPropsType, ScaleThemePropsType } from "../../../global/Types"
+import { ScaleStatePropsType, ScaleThemePropsType } from "../../../global/Types"
 
-function ScaleInfoScale({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {
+function ScaleInfoScale({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
 
-    const scaleLetDisplay = context.scaleLet.map((item, index) => {
+    const scaleLetDisplay = scaleState.scaleLet.map((item, index) => {
         return (
             <div
                 className='scale-info__scale__item'

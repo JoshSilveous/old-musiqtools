@@ -1,13 +1,13 @@
-import { ScaleContextPropsType, ScaleThemePropsType } from "../../../global/Types"
+import { ScaleStatePropsType, ScaleThemePropsType } from "../../../global/Types"
 import { generateMajor7Chord, generateMinor7Chord, generateDiminishedChord, toRomanNumeral } from "./ScaleInfoChords_Functions"
 
-function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemePropsType) {
+function ScaleInfoChords({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
 
     let modeFormula: number[] = []
     /*      0 = Major
             1 = Minor
             2 = Diminshed       */
-    switch (context.scaleSettings.mode) {
+    switch (scaleState.scaleSettings.mode) {
         case 0: modeFormula = [0, 1, 1, 0, 0, 1, 2]; break
         case 1: modeFormula = [1, 1, 0, 0, 1, 2, 0]; break
         case 2: modeFormula = [1, 0, 0, 1, 2, 0, 1]; break
@@ -23,13 +23,13 @@ function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemeP
         let chordType: string = ''
         switch (item) {
             case 0:
-                chord = generateMajor7Chord(context.scaleNum[index])
+                chord = generateMajor7Chord(scaleState.scaleNum[index])
                 chordType = 'Major'
                 break
-            case 1: chord = generateMinor7Chord(context.scaleNum[index])
+            case 1: chord = generateMinor7Chord(scaleState.scaleNum[index])
                 chordType = 'Minor'
                 break
-            case 2: chord = generateDiminishedChord(context.scaleNum[index])
+            case 2: chord = generateDiminishedChord(scaleState.scaleNum[index])
                 chordType = 'Diminished'
                 break
         }
@@ -57,7 +57,7 @@ function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemeP
                 {/* Maps over each item in the chord */}
                 {chord.map((item, index) => {
                     let currentColor = theme.themeValues.accent2
-                    if (!context.scaleNum.includes(item)) {
+                    if (!scaleState.scaleNum.includes(item)) {
                         currentColor = theme.themeValues.background
                     }
                     else if (index === 3) {
@@ -71,7 +71,7 @@ function ScaleInfoChords({ context, theme }: ScaleContextPropsType & ScaleThemeP
                             }}
                             key={index}
                         >
-                            {context.scaleLetOptions[item]}
+                            {scaleState.scaleLetOptions[item]}
                         </div>)
                 })}
             </div>
