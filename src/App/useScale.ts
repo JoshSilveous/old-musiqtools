@@ -30,7 +30,6 @@ export default function useScale(): UseScaleType {
 }
 
 function genScaleNum(tonic: number, mode: number) {
-
     let scaleFormula: number[] = []
     switch (mode) {
         case 0: scaleFormula = [2, 2, 1, 2, 2, 2]; break
@@ -40,6 +39,7 @@ function genScaleNum(tonic: number, mode: number) {
         case 4: scaleFormula = [2, 2, 1, 2, 2, 1]; break
         case 5: scaleFormula = [2, 1, 2, 2, 1, 2]; break
         case 6: scaleFormula = [1, 2, 2, 1, 2, 2]; break
+        default: scaleFormula = [1, 1, 1, 1, 1, 1]; break
     }
 
     let scale = [tonic]

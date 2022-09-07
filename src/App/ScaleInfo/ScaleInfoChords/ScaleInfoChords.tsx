@@ -41,9 +41,6 @@ function ScaleInfoChords({ scaleState, theme }: ScaleStatePropsType & ScaleTheme
             <div
                 key={index}
                 className='scale-info__chord'
-                style={{
-                    backgroundColor: theme.lightenedThemeValues.background,
-                }}
             >
                 <div className='scale-info__chord__numeral'>
                     {currentChordRoman}
@@ -56,19 +53,16 @@ function ScaleInfoChords({ scaleState, theme }: ScaleStatePropsType & ScaleTheme
 
                 {/* Maps over each item in the chord */}
                 {chord.map((item, index) => {
-                    let currentColor = theme.themeValues.accent2
+                    let itemClassName = ''
                     if (!scaleState.scaleNum.includes(item)) {
-                        currentColor = theme.themeValues.background
+                        itemClassName = 'scale-info__chord__item-7-unincluded'
                     }
                     else if (index === 3) {
-                        currentColor = theme.themeValues.accent1
+                        itemClassName = 'scale-info__chord__item-7-included'
                     }
                     return (
                         <div
-                            className='scale-info__chord__item'
-                            style={{
-                                color: currentColor
-                            }}
+                            className={`scale-info__chord__item ${itemClassName}`}
                             key={index}
                         >
                             {scaleState.scaleLetOptions[item]}

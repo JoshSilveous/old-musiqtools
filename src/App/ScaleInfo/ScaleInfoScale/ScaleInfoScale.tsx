@@ -6,10 +6,6 @@ function ScaleInfoScale({ scaleState, theme }: ScaleStatePropsType & ScaleThemeP
         return (
             <div
                 className='scale-info__scale__item'
-                style={{
-                    backgroundColor: theme.lightenedThemeValues.background,
-                    color: theme.themeValues.text
-                }}
                 key={index}
             >
                 {item}

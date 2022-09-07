@@ -26,7 +26,6 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
         // eslint-disable-next-line
     }, [currentOption])
 
-
     // Styles
 
     const menustyle: React.CSSProperties = {
@@ -77,7 +76,6 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
             <option
                 key={index}
                 value={index}
-                onClick={() => setCurrentOption(index)}
             >
                 {item}
             </option>
@@ -85,7 +83,11 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
     })
 
     function selectSetCurrentOption(e: any) {
-        setCurrentOption(e.target.value)
+        setCurrentOption(+e.target.value)
+        // Why the +?
+        // I spend DAYS debugging this. Basically, HTML <select> element ALWAYS returns a string, not an integer.
+        // This code was expecting an integer, so when it got a string, everything messed up.
+        // The + turns a string into an integer. It feels like an icky solution, but that's JS for ya.
     }
 
     return (
@@ -113,6 +115,8 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
                         transform: dropDownOpen ? '' : 'rotate(-180deg)'
                     }}
                 />
+
+
             </div>
 
             <div
@@ -145,7 +149,6 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
                 <div>
                     {optionElements}
                 </div>
-
             </div>
         </>
     )

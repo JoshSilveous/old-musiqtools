@@ -8,7 +8,7 @@ import useScale from './useScale'
 
 function App() {
     const scaleState = useScale()
-
+    // console.log(scaleState)
     const theme1: ThemeValuesType = {
         background: '#2c3f43',
         text: '#faecac',
@@ -34,17 +34,11 @@ function App() {
 
     const theme: ThemeType = { themeValues, lightenedThemeValues, setThemeValues }
 
-
     return (
-        <div className="app" style={{
-            color: themeValues.text,
-            backgroundColor: themeValues.background
-        }}>
+        <div className="app">
             <h1>MusiqTools</h1>
             <p className="tagline">A straightforward app designed to make producing music less of a headache.</p>
-            <div style={{ backgroundColor: lightenedThemeValues.background, padding: '30px', borderRadius: '15px' }}>
-                <ScaleMenu scaleState={scaleState} theme={theme} />
-            </div>
+            <ScaleMenu scaleState={scaleState} theme={theme} />
             <ScaleInfo scaleState={scaleState} theme={theme} />
 
         </div>
