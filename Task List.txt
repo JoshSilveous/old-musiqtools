@@ -1,6 +1,11 @@
     > Move themes to CSS variables
         - JCheckbox components... may need to use Theme Context for this.
+
     > Make elements modular
         - Add/remove components
             Guitar, Piano, Saxaphone, etc.
         - Allow to reorder via drag / dropping
+
+    * > Fix mobile issues
+        - Weird hitbox
+        - iOS display issues
