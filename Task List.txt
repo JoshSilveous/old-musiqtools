@@ -1,0 +1,6 @@
+    > Move themes to CSS variables
+
+    > Make elements modular
+        - Add/remove components
+            Guitar, Piano, Saxaphone, etc.
+        - Allow to reorder via drag / dropping
