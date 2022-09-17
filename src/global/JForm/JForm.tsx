@@ -188,13 +188,7 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
 
     const checkboxStyle: React.CSSProperties = {
         backgroundColor: determineBackgroundColor(),
-        width: '14px',
-        height: '14px',
-        display: 'flex',
-        borderRadius: '5px',
-        border: `solid 6px ${isHovered ? lightenColor(primaryColor) : primaryColor}`, // There's a weird delay, I should re-do the hover logic so that the whole box highlights on hover
-        cursor: 'pointer',
-        transition: 'background-color 0.2s ease'
+        borderColor: isHovered ? lightenColor(primaryColor) : primaryColor, // There's a weird delay, I should re-do the hover logic so that the whole box highlights on hover
     }
 
     function onHover() {
@@ -207,6 +201,7 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
     return (
         <div
             style={checkboxStyle}
+            className="JForm__Checkbox"
             onMouseEnter={onHover}
             onMouseLeave={onHoverExit}
             onClick={() => setIsChecked(prev => !prev)}
@@ -214,7 +209,7 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
             <div style={{
                 display: 'flex'
             }}>
-                <CheckmarkActive style={{ stroke: backgroundColor }} />
+                <CheckmarkActive style={{ stroke: backgroundColor, display: isChecked ? 'block' : 'none' }} />
             </div>
         </div>
     )
