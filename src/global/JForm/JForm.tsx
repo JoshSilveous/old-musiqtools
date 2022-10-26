@@ -84,10 +84,39 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
 
     function selectSetCurrentOption(e: any) {
         setCurrentOption(+e.target.value)
+        setDropDownOpen(false)
         // Why the +?
         // I spend DAYS debugging this. Basically, HTML <select> element ALWAYS returns a string, not an integer.
         // This code was expecting an integer, so when it got a string, everything messed up.
         // The + turns a string into an integer. It feels like an icky solution, but that's JS for ya.
+    }
+
+    // Variable declared outside of function for persistence
+    let newIndex = currentOption
+    function handleKeydown(e: any) {
+        if (e.key === "ArrowDown") {
+            e.preventDefault()
+            newIndex++
+            if (newIndex >= options.length) { newIndex = newIndex - options.length }
+            setCurrentOption(newIndex)
+        }
+        else if (e.key === "ArrowUp") {
+            e.preventDefault()
+            newIndex--
+            if (newIndex < 0) { newIndex = newIndex + options.length }
+            setCurrentOption(newIndex)
+        }
+        else { return }
+    }
+
+    function dropdownFocus() {
+        setTimeout(() => { window.addEventListener('keydown', handleKeydown) }, 2000)
+
+        // console.log("listener added!")
+    }
+    function dropdownBlur() {
+        window.removeEventListener('keydown', handleKeydown) /// removing event listeners not working
+        // console.log("listener removed!")
     }
 
     return (
@@ -120,6 +149,9 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
             </div>
 
             <div
+                tabIndex={0}
+                onFocus={dropdownFocus}
+                onBlur={dropdownBlur}
                 className='JForm__menustyle JForm-desktop'
                 style={menustyle}
                 onMouseEnter={onHover}
@@ -198,8 +230,29 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
         setIsHovered(false)
     }
 
+    function handleKeydown(e: any) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault()
+            console.log("inner loop triggered on " + e.key)
+            setIsChecked(prev => !prev)
+        }
+        else return
+    }
+    function handleOnFocus() {
+        window.addEventListener('keydown', handleKeydown)
+        setIsHovered(true)
+    }
+    function handleOnBlur() {
+        console.log("handleOnBlur triggered!")
+        window.removeEventListener('keydown', handleKeydown)
+        setIsHovered(false)
+    }
+
     return (
         <div
+            tabIndex={0}
+            onFocus={handleOnFocus}
+            onBlur={handleOnBlur}
             style={checkboxStyle}
             className="JForm__Checkbox"
             onMouseEnter={onHover}
