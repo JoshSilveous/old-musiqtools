@@ -18,7 +18,10 @@
     position: absolute;
     border: none;
     appearance: none;
-
+}
+.JForm__menustyle:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 5px var(--background);
 }
 
 .JForm__Checkbox {
@@ -29,6 +32,11 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
     border: solid 6px;
+}
+
+.JForm__Checkbox:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 5px var(--background);
 }
 
 .JForm__DropDownArrow-mobile {

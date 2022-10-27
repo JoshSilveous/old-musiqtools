@@ -6,7 +6,6 @@ import { ScaleStatePropsType, ScaleThemePropsType } from '../../global/Types'
 export default function ScaleMenu({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
 
     function updateScaleContext(valueName: string, value: number | boolean) {
-        console.log("Updating Scale Context with", valueName, "as", value)
         scaleState.setScaleSettings(prev => {
             return { ...prev, [valueName]: value }
         })

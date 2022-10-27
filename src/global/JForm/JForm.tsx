@@ -10,6 +10,7 @@ import { lightenColor } from './JForm_Functions'
 
 export function JSelect({ options, defaultIndex, primaryColor, textColor, width, returnFunction }: JSelectProps) {
 
+
     // States
     const [currentOption, setCurrentOption] = React.useState(defaultIndex)
     const [dropDownOpen, setDropDownOpen] = React.useState(false)
@@ -65,7 +66,7 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
                 onClick={() => setCurrentOption(index)}
                 onMouseEnter={() => makeThisHover(index)}
                 style={{
-                    color: optionsHover[index] ? lightenColor(textColor) : textColor
+                    color: optionsHover[index] || index === currentOption ? lightenColor(textColor) : textColor
                 }}
             >{item}</div>)
     })
@@ -91,7 +92,7 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
         // The + turns a string into an integer. It feels like an icky solution, but that's JS for ya.
     }
 
-    // Variable declared outside of function for persistence
+    // Variable declared outside of function for persistence across re-renders
     let newIndex = currentOption
     function handleKeydown(e: any) {
         if (e.key === "ArrowDown") {
@@ -106,19 +107,25 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
             if (newIndex < 0) { newIndex = newIndex + options.length }
             setCurrentOption(newIndex)
         }
+        else if (e.key === " " || e.key == "Enter") {
+            e.preventDefault()
+            setDropDownOpen(prev => !prev)
+        }
+        else if (e.key === "Tab") {
+            setDropDownOpen(false)
+        }
         else { return }
     }
 
-    function dropdownFocus() {
-        setTimeout(() => { window.addEventListener('keydown', handleKeydown) }, 2000)
 
-        // console.log("listener added!")
-    }
-    function dropdownBlur() {
-        window.removeEventListener('keydown', handleKeydown) /// removing event listeners not working
-        // console.log("listener removed!")
-    }
+    const divRef = React.useRef<any>(null)
 
+    React.useEffect(() => {
+        if (divRef.current) {
+            divRef.current.addEventListener('keydown', handleKeydown)
+            console.log('JSelect Listener Added')
+        }
+    }, [])
     return (
         <>
             <div className="JForm-mobile" style={{ color: textColor }}>
@@ -150,8 +157,7 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
 
             <div
                 tabIndex={0}
-                onFocus={dropdownFocus}
-                onBlur={dropdownBlur}
+                ref={divRef}
                 className='JForm__menustyle JForm-desktop'
                 style={menustyle}
                 onMouseEnter={onHover}
@@ -233,26 +239,25 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
     function handleKeydown(e: any) {
         if (e.key === "Enter" || e.key === " ") {
             e.preventDefault()
-            console.log("inner loop triggered on " + e.key)
             setIsChecked(prev => !prev)
         }
         else return
     }
-    function handleOnFocus() {
-        window.addEventListener('keydown', handleKeydown)
-        setIsHovered(true)
-    }
-    function handleOnBlur() {
-        console.log("handleOnBlur triggered!")
-        window.removeEventListener('keydown', handleKeydown)
-        setIsHovered(false)
-    }
+    const divRef = React.useRef<any>(null)
+
+    React.useEffect(() => {
+        if (divRef) {
+            divRef.current.addEventListener('keydown', handleKeydown)
+            console.log('JCheckbox Listener added')
+        }
+    }, [])
+
+    console.log("JCheckbox rendered")
 
     return (
         <div
             tabIndex={0}
-            onFocus={handleOnFocus}
-            onBlur={handleOnBlur}
+            ref={divRef}
             style={checkboxStyle}
             className="JForm__Checkbox"
             onMouseEnter={onHover}
