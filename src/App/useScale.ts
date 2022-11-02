@@ -18,13 +18,17 @@ export default function useScale(): UseScaleType {
         scaleLet.push(scaleLetOptions[scaleNumber])
     })
 
+    const [highlightedNotes, setHighlightedNotes] = useState([false, false, false, false, false, false, false, false, false, false, false, false])
+
     return ({
         scaleNum,
         scaleLet,
         scaleSettings,
         setScaleSettings,
         scaleLetOptions,
-        scaleModeOptions
+        scaleModeOptions,
+        highlightedNotes,
+        setHighlightedNotes
     })
 
 }

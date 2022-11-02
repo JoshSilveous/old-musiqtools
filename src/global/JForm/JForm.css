@@ -11,13 +11,15 @@
     font-size: 20px;
     padding: 5px 15px;
     border-radius: 18px;
-    transition: background-color 0.2s ease, max-height 0.5s ease;
+    transition: background-color 0.2s ease, max-height 0.5s ease, box-shadow 0.2s ease;
     cursor: pointer;
     overflow: hidden;
     user-select: none;
     position: absolute;
     border: none;
     appearance: none;
+    
+    box-shadow: 0 0 0 0px var(--background);
 }
 .JForm__menustyle:focus {
     outline: none !important;
@@ -30,8 +32,9 @@
     display: flex;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
     border: solid 6px;
+    box-shadow: 0 0 0 0px var(--background);
 }
 
 .JForm__Checkbox:focus {

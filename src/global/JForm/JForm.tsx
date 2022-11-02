@@ -95,19 +95,19 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
     // Variable declared outside of function for persistence across re-renders
     let newIndex = currentOption
     function handleKeydown(e: any) {
-        if (e.key === "ArrowDown") {
+        if (e.key === "ArrowDown" || e.key.toUpperCase() === "S") {
             e.preventDefault()
             newIndex++
             if (newIndex >= options.length) { newIndex = newIndex - options.length }
             setCurrentOption(newIndex)
         }
-        else if (e.key === "ArrowUp") {
+        else if (e.key === "ArrowUp" || e.key.toUpperCase() === "W") {
             e.preventDefault()
             newIndex--
             if (newIndex < 0) { newIndex = newIndex + options.length }
             setCurrentOption(newIndex)
         }
-        else if (e.key === " " || e.key == "Enter") {
+        else if (e.key === " " || e.key === "Enter") {
             e.preventDefault()
             setDropDownOpen(prev => !prev)
         }
@@ -125,6 +125,7 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
             divRef.current.addEventListener('keydown', handleKeydown)
             console.log('JSelect Listener Added')
         }
+        // eslint-disable-next-line
     }, [])
     return (
         <>
@@ -252,7 +253,6 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
         }
     }, [])
 
-    console.log("JCheckbox rendered")
 
     return (
         <div

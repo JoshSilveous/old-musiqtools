@@ -1,5 +1,6 @@
 import { ScaleStatePropsType, ScaleThemePropsType } from "../../../global/Types"
 import { generateMajor7Chord, generateMinor7Chord, generateDiminishedChord, toRomanNumeral } from "./ScaleInfoChords_Functions"
+import React from 'react';
 
 function ScaleInfoChords({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
 
@@ -15,6 +16,10 @@ function ScaleInfoChords({ scaleState, theme }: ScaleStatePropsType & ScaleTheme
         case 4: modeFormula = [0, 1, 2, 0, 1, 1, 0]; break
         case 5: modeFormula = [1, 2, 0, 1, 1, 0, 0]; break
         case 6: modeFormula = [2, 0, 1, 1, 0, 0, 1]; break
+    }
+    function highlightThis(index: number) {
+        // Maps through current highlightedNotes, finds the one that was selected, and inverts it's value
+        scaleState.setHighlightedNotes(prev => prev.map((item, thisindex) => index === thisindex ? !item : item))
     }
 
     // Maps over each chord
@@ -37,38 +42,54 @@ function ScaleInfoChords({ scaleState, theme }: ScaleStatePropsType & ScaleTheme
         let currentChordRoman: string = toRomanNumeral(index + 1)
         if (item !== 0) { currentChordRoman = currentChordRoman.toLowerCase() }
         if (item === 2) { currentChordRoman = currentChordRoman + '°' }
-        return (
-            <div
-                key={index}
-                className='scale-info__chord'
-            >
-                <div className='scale-info__chord__numeral'>
-                    {currentChordRoman}
-                </div>
-                <div
-                    className='scale-info__chord__label'
-                >
-                    {chordType}
-                </div>
 
-                {/* Maps over each item in the chord */}
-                {chord.map((item, index) => {
-                    let itemClassName = ''
-                    if (!scaleState.scaleNum.includes(item)) {
-                        itemClassName = 'scale-info__chord__item-7-unincluded'
+
+        return (
+            <>
+                <div
+                    key={index}
+                    className='scale-info__chord'
+                    onClick={() => { console.log('test') }}
+                >
+                    <div className='scale-info__chord__numeral'>
+                        {currentChordRoman}
+                    </div>
+                    <div
+                        className='scale-info__chord__label'
+                    >
+                        {scaleState.scaleLet[index]} {chordType}
+                    </div>
+
+                    {/* Maps over each item in the chord */}
+                    {chord.map((item, index) => {
+                        let itemClassName = ''
+                        let handleClick = () => {
+                            highlightThis(item)
+                        }
+                        if (!scaleState.scaleNum.includes(item)) {
+                            itemClassName = 'scale-info__chord__item-7-unincluded'
+                            handleClick = () => {
+                                console.log("Not in scale!")
+                            }
+                        }
+                        else if (index === 3) {
+                            itemClassName = 'scale-info__chord__item-7-included'
+                        }
+                        let isHighlighted = scaleState.highlightedNotes[item]
+                        return (
+                            <div
+                                className={`scale-info__chord__item ${itemClassName} ${isHighlighted && 'scale-info__chord__item-highlighted'}`}
+                                key={index}
+                                style={{ backgroundColor: scaleState.highlightedNotes[item] ? 'var(--background3)' : '' }}
+                                onClick={handleClick}
+                            >
+                                {scaleState.scaleLetOptions[item]}
+                            </div>)
+                    })
                     }
-                    else if (index === 3) {
-                        itemClassName = 'scale-info__chord__item-7-included'
-                    }
-                    return (
-                        <div
-                            className={`scale-info__chord__item ${itemClassName}`}
-                            key={index}
-                        >
-                            {scaleState.scaleLetOptions[item]}
-                        </div>)
-                })}
-            </div>
+                </div>
+                {index != modeFormula.length - 1 && <hr />}
+            </>
         )
     })
 

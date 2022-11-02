@@ -14,7 +14,9 @@ export type UseScaleType = {
     scaleSettings: scaleSettingsType,
     setScaleSettings: React.Dispatch<React.SetStateAction<scaleSettingsType>>,
     scaleLetOptions: string[],
-    scaleModeOptions: string[]
+    scaleModeOptions: string[],
+    highlightedNotes: boolean[],
+    setHighlightedNotes: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 export type ThemeValuesType = {
     background: string,

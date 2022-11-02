@@ -9,6 +9,7 @@ import useScale from './useScale'
 function App() {
     const scaleState = useScale()
     // console.log(scaleState)
+    // eslint-disable-next-line
     const theme1: ThemeValuesType = {
         background: '#2c3f43',
         text: '#faecac',

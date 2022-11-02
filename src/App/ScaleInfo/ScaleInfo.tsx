@@ -1,6 +1,7 @@
 import { ScaleStatePropsType, ScaleThemePropsType } from "../../global/Types"
 import ScaleInfoChords from "../ScaleInfo/ScaleInfoChords/ScaleInfoChords"
 import ScaleInfoScale from "../ScaleInfo/ScaleInfoScale/ScaleInfoScale"
+import ScaleInfoGuitar from "./ScaleInfoGuitar/ScaleInfoGuitar"
 
 function ScaleInfo({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
 
@@ -9,6 +10,7 @@ function ScaleInfo({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsT
         <>
             <ScaleInfoScale scaleState={scaleState} theme={theme} />
             <ScaleInfoChords scaleState={scaleState} theme={theme} />
+            <ScaleInfoGuitar scaleState={scaleState} />
         </>
 
     )

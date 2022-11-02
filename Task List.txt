@@ -1,11 +1,18 @@
-    > Move themes to CSS variables
-        - JCheckbox components... may need to use Theme Context for this.
+FOCUS: Just get things working.
 
-    > Make elements modular
+> usePopup hook
+
+> remove theme context (**JForm components to string CSS props)
+
+> consolidate CSS
+        - seperate files for components
+        - all media queries in same files
+        - use common classes for repetitive attributes
+
+> Make elements modular
         - Add/remove components
             Guitar, Piano, Saxaphone, etc.
         - Allow to reorder via drag / dropping
 
-    * > Fix mobile issues
-        - Weird hitbox
+> Fix mobile issues
         - iOS display issues
