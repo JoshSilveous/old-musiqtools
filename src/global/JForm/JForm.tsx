@@ -3,12 +3,11 @@ import './JForm.css'
 import { ReactComponent as DropDownArrow } from '../../assets/DropDownArrow.svg'
 import { ReactComponent as CheckmarkActive } from '../../assets/checkbox_active.svg'
 import { JCheckboxProps, JSelectProps } from './JForm_Types'
-import { lightenColor } from './JForm_Functions'
 
 
 
 
-export function JSelect({ options, defaultIndex, primaryColor, textColor, width, returnFunction }: JSelectProps) {
+export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover, textColor, textColorHover, width, returnFunction }: JSelectProps) {
 
 
     // States
@@ -38,7 +37,7 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
 
     // Helper Functions
     function onHover(): void {
-        setHoverState(lightenColor(primaryColor))
+        setHoverState(primaryColorHover)
     }
     function onHoverExit(): void {
         setHoverState(primaryColor)
@@ -66,7 +65,7 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
                 onClick={() => setCurrentOption(index)}
                 onMouseEnter={() => makeThisHover(index)}
                 style={{
-                    color: optionsHover[index] || index === currentOption ? lightenColor(textColor) : textColor
+                    color: optionsHover[index] || index === currentOption ? textColorHover : textColor
                 }}
             >{item}</div>)
     })
@@ -195,7 +194,7 @@ export function JSelect({ options, defaultIndex, primaryColor, textColor, width,
 
 
 
-export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnFunction }: JCheckboxProps) {
+export function JCheckbox({ defaultState, primaryColor, primaryColorHover, backgroundColor, backgroundColorHover, returnFunction }: JCheckboxProps) {
 
 
 
@@ -211,13 +210,13 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
         let currentColor: string
         if (isChecked) {
             if (isHovered) {
-                currentColor = lightenColor(primaryColor)
+                currentColor = primaryColorHover
             } else {
                 currentColor = primaryColor
             }
         } else {
             if (isHovered) {
-                currentColor = lightenColor(backgroundColor)
+                currentColor = backgroundColorHover
             } else {
                 currentColor = backgroundColor
             }
@@ -227,7 +226,7 @@ export function JCheckbox({ defaultState, primaryColor, backgroundColor, returnF
 
     const checkboxStyle: React.CSSProperties = {
         backgroundColor: determineBackgroundColor(),
-        borderColor: isHovered ? lightenColor(primaryColor) : primaryColor, // There's a weird delay, I should re-do the hover logic so that the whole box highlights on hover
+        borderColor: isHovered ? primaryColorHover : primaryColor, // There's a weird delay, I should re-do the hover logic so that the whole box highlights on hover
     }
 
     function onHover() {

@@ -10,6 +10,15 @@
     padding: 20px;
     overflow: auto;
 
+    /* --background: #2c3f43;
+    --background2: #6b969e;
+    --background3: #a2bec3;
+    --text: #faecac;
+    --accent1: #87c6bb;
+    --accent1hover: #dcefec;
+    --accent2: #e16853;
+    --accent2hover: #f4c6be; */
+
     --background: #ffd670;
     --background2: #fffd98;
     --background3: #ffffcc;
@@ -241,4 +250,3 @@
 .string:last-child > .fretcontainer:first-child {
     border-top: solid 2px var(--background2);
 }
-.string:child

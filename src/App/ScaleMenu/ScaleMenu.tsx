@@ -1,9 +1,9 @@
 import { JSelect, JCheckbox } from '../../global/JForm/JForm'
-import { ScaleStatePropsType, ScaleThemePropsType } from '../../global/Types'
+import { ScaleStatePropsType } from '../../global/Types'
 
 
 
-export default function ScaleMenu({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
+export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
 
     function updateScaleContext(valueName: string, value: number | boolean) {
         scaleState.setScaleSettings(prev => {
@@ -19,8 +19,10 @@ export default function ScaleMenu({ scaleState, theme }: ScaleStatePropsType & S
                 <div className='scale-menu__row__JCheckboxContainer'>
                     <JCheckbox
                         defaultState={false}
-                        primaryColor={theme.themeValues.accent1}
-                        backgroundColor={theme.themeValues.background}
+                        primaryColor='var(--accent1)'
+                        primaryColorHover='var(--accent1hover)'
+                        backgroundColor='var(--background)'
+                        backgroundColorHover='var(--background1)'
                         returnFunction={(value: boolean) => updateScaleContext('isSharp', value)}
                     />
                 </div>
@@ -31,8 +33,10 @@ export default function ScaleMenu({ scaleState, theme }: ScaleStatePropsType & S
                     <JSelect
                         options={scaleState.scaleLetOptions}
                         defaultIndex={4}
-                        primaryColor={theme.themeValues.accent1}
-                        textColor={theme.themeValues.background}
+                        primaryColor='var(--accent1)'
+                        primaryColorHover='var(--accent1hover)'
+                        textColor='var(--background)'
+                        textColorHover='var(--background2)'
                         width='70px'
                         returnFunction={(value: number) => updateScaleContext('tonic', value)}
                     />
@@ -41,8 +45,10 @@ export default function ScaleMenu({ scaleState, theme }: ScaleStatePropsType & S
                     <JSelect
                         options={scaleState.scaleModeOptions}
                         defaultIndex={0}
-                        primaryColor={theme.themeValues.accent2}
-                        textColor={theme.themeValues.background}
+                        primaryColor='var(--accent2)'
+                        primaryColorHover='var(--accent2hover)'
+                        textColor='var(--background)'
+                        textColorHover='var(--background2)'
                         width='180px'
                         returnFunction={(value: number) => updateScaleContext('mode', value)}
                     />

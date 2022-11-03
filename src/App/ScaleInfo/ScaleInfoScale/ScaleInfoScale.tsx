@@ -1,6 +1,6 @@
-import { ScaleStatePropsType, ScaleThemePropsType } from "../../../global/Types"
+import { ScaleStatePropsType } from "../../../global/Types"
 
-function ScaleInfoScale({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
+function ScaleInfoScale({ scaleState }: ScaleStatePropsType) {
     function highlightThis(index: number) {
         // Maps through current highlightedNotes, finds the one that was selected, and inverts it's value
         scaleState.setHighlightedNotes(prev => prev.map((item, thisindex) => index === thisindex ? !item : item))

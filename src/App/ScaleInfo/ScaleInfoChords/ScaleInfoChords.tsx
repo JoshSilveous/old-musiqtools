@@ -1,8 +1,8 @@
-import { ScaleStatePropsType, ScaleThemePropsType } from "../../../global/Types"
+import { ScaleStatePropsType } from "../../../global/Types"
 import { generateMajor7Chord, generateMinor7Chord, generateDiminishedChord, toRomanNumeral } from "./ScaleInfoChords_Functions"
 import React from 'react';
 
-function ScaleInfoChords({ scaleState, theme }: ScaleStatePropsType & ScaleThemePropsType) {
+function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
 
     let modeFormula: number[] = []
     /*      0 = Major

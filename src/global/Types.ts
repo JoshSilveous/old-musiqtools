@@ -18,23 +18,8 @@ export type UseScaleType = {
     highlightedNotes: boolean[],
     setHighlightedNotes: React.Dispatch<React.SetStateAction<boolean[]>>
 }
-export type ThemeValuesType = {
-    background: string,
-    text: string,
-    accent1: string,
-    accent2: string
-}
 
-export type ThemeType = {
-    themeValues: ThemeValuesType,
-    lightenedThemeValues: ThemeValuesType,
-    setThemeValues: React.Dispatch<React.SetStateAction<ThemeValuesType>>
-}
 
 export type ScaleStatePropsType = {
     scaleState: UseScaleType
-}
-
-export type ScaleThemePropsType = {
-    theme: ThemeType
 }
