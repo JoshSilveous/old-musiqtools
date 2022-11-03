@@ -1,6 +1,7 @@
-import { ScaleStatePropsType } from "../../../global/Types"
-import { generateMajor7Chord, generateMinor7Chord, generateDiminishedChord, toRomanNumeral } from "./ScaleInfoChords_Functions"
+import { ScaleStatePropsType } from '../../../global/Types'
+import { generateMajor7Chord, generateMinor7Chord, generateDiminishedChord, toRomanNumeral } from './ScaleInfoChords_Functions'
 import React from 'react';
+import './ScaleInfoChords.css'
 
 function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
 
@@ -48,14 +49,14 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
             <>
                 <div
                     key={index}
-                    className='scale-info__chord'
+                    className='scaleinfochord-chord'
                     onClick={() => { console.log('test') }}
                 >
-                    <div className='scale-info__chord__numeral'>
+                    <div className='scaleinfochord-numeral'>
                         {currentChordRoman}
                     </div>
                     <div
-                        className='scale-info__chord__label'
+                        className='scaleinfochord-label'
                     >
                         {scaleState.scaleLet[index]} {chordType}
                     </div>
@@ -67,18 +68,18 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
                             highlightThis(item)
                         }
                         if (!scaleState.scaleNum.includes(item)) {
-                            itemClassName = 'scale-info__chord__item-7-unincluded'
+                            itemClassName = 'seventh unincluded'
                             handleClick = () => {
-                                console.log("Not in scale!")
+                                console.log('Not in scale!')
                             }
                         }
                         else if (index === 3) {
-                            itemClassName = 'scale-info__chord__item-7-included'
+                            itemClassName = 'seventh included'
                         }
                         let isHighlighted = scaleState.highlightedNotes[item]
                         return (
                             <div
-                                className={`scale-info__chord__item ${itemClassName} ${isHighlighted && 'scale-info__chord__item-highlighted'}`}
+                                className={`scaleinfochord-note ${itemClassName} ${isHighlighted && 'highlighted'}`}
                                 key={index}
                                 style={{ backgroundColor: scaleState.highlightedNotes[item] ? 'var(--background3)' : '' }}
                                 onClick={handleClick}
@@ -94,7 +95,7 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
     })
 
     return (
-        <div className="scale-info__chord__container">
+        <div className='scaleinfochord-container'>
             {chords}
         </div>
     )

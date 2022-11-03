@@ -1,6 +1,6 @@
 import { JSelect, JCheckbox } from '../../global/JForm/JForm'
 import { ScaleStatePropsType } from '../../global/Types'
-
+import './ScaleMenu.css'
 
 
 export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
@@ -12,11 +12,10 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
     }
 
     return (
-        <div className='scale-menu'>
-            <div className='scale-menu__row'>
+        <div className='scalemenu'>
+            <div className='scalemenu-row'>
                 Display Sharps (#) instead of Flats (b)?
-
-                <div className='scale-menu__row__JCheckboxContainer'>
+                <div className='jcheckbox-container'>
                     <JCheckbox
                         defaultState={false}
                         primaryColor='var(--accent1)'
@@ -27,9 +26,9 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
                     />
                 </div>
             </div>
-            <div className='scale-menu__row'>
+            <div className='scalemenu-row'>
                 Scale:
-                <div className="scale-menu__row__JSelectContainer-scale">
+                <div className='jselect-container scale'>
                     <JSelect
                         options={scaleState.scaleLetOptions}
                         defaultIndex={4}
@@ -41,7 +40,7 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
                         returnFunction={(value: number) => updateScaleContext('tonic', value)}
                     />
                 </div>
-                <div className="scale-menu__row__JSelectContainer-mode">
+                <div className='jselect-container mode'>
                     <JSelect
                         options={scaleState.scaleModeOptions}
                         defaultIndex={0}
@@ -53,7 +52,6 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
                         returnFunction={(value: number) => updateScaleContext('mode', value)}
                     />
                 </div>
-
             </div>
         </div>
     )

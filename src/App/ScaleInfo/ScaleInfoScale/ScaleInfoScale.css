@@ -1,0 +1,31 @@
+.scaleinfoscale-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    gap: 5px;
+    margin-top: 30px;
+}
+    @media only screen and (max-width: 600px) {
+        .scaleinfoscale-container {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+.scaleinfoscale-container > .item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: 700;
+    background-color: var(--background2);
+    color: var(--text);
+}
+
+.scaleinfoscale-container > .item:hover {
+    cursor: pointer;
+    background-color: var(--background3);
+}
+

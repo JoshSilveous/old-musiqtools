@@ -1,0 +1,90 @@
+.scaleinfochord-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 700;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--background2);
+    max-width: 500px;
+    padding: 10px 20px;
+    user-select: none;
+}
+
+.scaleinfochord-container > hr {
+    background-color: var(--background);
+    height: 3px;
+    width: 100%;
+    margin: 1px;
+    border: 1px solid var(--background);
+    box-shadow: none;
+}
+
+.scaleinfochord-chord {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    overflow: auto;
+    font-size: 26px;
+}
+.scaleinfochord-note {
+    flex-shrink: 0;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent2);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.scaleinfochord-note.seventh.included {
+    color: var(--accent1);
+}
+.scaleinfochord-note.seventh.unincluded {
+    color: var(--background);
+}
+.scaleinfochord-note.highlighted {
+    background: var(--background3);
+    box-shadow: inset 0px 0px 0px 3px var(--background);
+}
+.scaleinfochord-note:hover {
+    background: var(--background3);
+}
+
+
+.scaleinfochord-numeral {
+    flex-shrink: 0;
+    width: 50px;
+}
+.scaleinfochord-label {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: '-';
+    min-width: 60px;
+}
+
+/* To prevent overflow from looking weird on really small screens*/
+@media screen and (max-width: 400px) {
+    .scaleinfochord-label {
+        display: none;
+    }
+    .scaleinfochord {
+        justify-content: center;
+    }
+    .scaleinfochord-note, 
+    .scaleinfochord-numeral {
+        flex-shrink: 1;
+    }
+}
+
+.scale-info__chord__container {
+    gap: 5px;
+}

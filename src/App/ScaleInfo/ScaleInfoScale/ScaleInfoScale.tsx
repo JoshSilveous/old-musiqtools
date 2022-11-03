@@ -1,4 +1,5 @@
-import { ScaleStatePropsType } from "../../../global/Types"
+import { ScaleStatePropsType } from '../../../global/Types'
+import './ScaleInfoScale.css'
 
 function ScaleInfoScale({ scaleState }: ScaleStatePropsType) {
     function highlightThis(index: number) {
@@ -8,7 +9,7 @@ function ScaleInfoScale({ scaleState }: ScaleStatePropsType) {
     const scaleLetDisplay = scaleState.scaleLet.map((item, index) => {
         return (
             <div
-                className='scale-info__scale__item'
+                className='item'
                 key={index}
                 style={{ backgroundColor: scaleState.highlightedNotes[scaleState.scaleLetOptions.indexOf(item)] ? 'var(--background3)' : '' }}
                 onMouseDown={() => highlightThis(scaleState.scaleLetOptions.indexOf(item))}
@@ -17,7 +18,7 @@ function ScaleInfoScale({ scaleState }: ScaleStatePropsType) {
             </div>)
     })
     return (
-        <div className='scale-info__scale'>
+        <div className='scaleinfoscale-container'>
             {scaleLetDisplay}
         </div>
     )

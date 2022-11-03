@@ -8,9 +8,9 @@ function App() {
     // console.log(scaleState)
     // eslint-disable-next-line
     return (
-        <div className="app">
+        <div className='app'>
             <h1>MusiqTools</h1>
-            <p className="tagline">A straightforward app designed to make producing music less of a headache.</p>
+            <p className='tagline'>A straightforward app designed to make producing music less of a headache.</p>
             <ScaleMenu scaleState={scaleState} />
             <ScaleInfo scaleState={scaleState} />
 

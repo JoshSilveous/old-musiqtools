@@ -1,7 +1,7 @@
-import { ScaleStatePropsType } from "../../global/Types"
-import ScaleInfoChords from "../ScaleInfo/ScaleInfoChords/ScaleInfoChords"
-import ScaleInfoScale from "../ScaleInfo/ScaleInfoScale/ScaleInfoScale"
-import ScaleInfoGuitar from "./ScaleInfoGuitar/ScaleInfoGuitar"
+import { ScaleStatePropsType } from '../../global/Types'
+import ScaleInfoChords from '../ScaleInfo/ScaleInfoChords/ScaleInfoChords'
+import ScaleInfoScale from '../ScaleInfo/ScaleInfoScale/ScaleInfoScale'
+import ScaleInfoGuitar from './ScaleInfoGuitar/ScaleInfoGuitar'
 
 function ScaleInfo({ scaleState }: ScaleStatePropsType) {
 

@@ -1,0 +1,82 @@
+.scaleinfoguitar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 700;
+    width: fit-content;
+    border-radius: 20px;
+    background-color: var(--background2);
+    padding: 10px 20px;
+}
+
+.scaleinfoguitar-fretboard {
+    margin-top: 20px;
+    user-select: none;
+}
+
+.scaleinfoguitar-fretboard > .string {
+    display: flex;
+}
+
+
+.scaleinfoguitar-fretboard > .string:first-child > .notecontainer {
+    border-top: solid 4px var(--text);
+}   /*  All notecontainers on the top string  */
+
+.scaleinfoguitar-fretboard > .string:last-child > * {
+    border: none;
+    border-top: solid 2px var(--text);
+}   /*  All notecontainers on the bottom string  */
+
+.scaleinfoguitar-fretboard > .string:first-child > .notecontainer:first-child {
+    border-top: solid 5px var(--background2);
+}   /*  Top-left notecontainer holding the open notes  */
+
+.string:last-child > .notecontainer:first-child {
+    border-top: solid 2px var(--background2);
+}   /*  Bottom-left notecontainer holding the open notes*/
+
+
+.notecontainer {
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    border: solid 2px var(--text);
+}
+
+.notecontainer:first-child {
+    border-left: solid 4px var(--text);
+    border: solid 2px var(--background2);
+}   /*  First vertical row (open notes)  */
+
+.notecontainer:nth-child(2){
+    border-left: solid 4px var(--text);
+}   /*  Second vertical row (first on the actual fretboard)  */
+
+.notecontainer:last-child {
+    border-right: solid 4px var(--text);
+}   /*  Last vertical row  */
+
+
+.note {
+    transform: translateY(-20px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border: solid 3px var(--text);
+    background-color: var(--background3);
+    color: var(--text);
+}
+
+.note.tonic {
+    background-color: var(--accent1);
+    color: var(--background2);
+}
+

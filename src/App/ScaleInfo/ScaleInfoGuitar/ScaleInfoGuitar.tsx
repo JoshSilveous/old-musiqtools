@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScaleStatePropsType } from '../../../global/Types';
-
+import './ScaleInfoGuitar.css'
 export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
 
@@ -20,22 +20,10 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
         const fretsDisplay = string.map((fret, fretIndex) => {
             const included = scaleState.scaleNum.includes(fret)
 
-            let backgroundColor = 'var(--background3)'
-            let textColor = 'var(--text)'
-            if (fret === scaleState.scaleNum[0]) {
-                backgroundColor = 'var(--accent1)'
-                textColor = 'var(--background2)'
-            }
-
-
-
             return (
-                <div className="fretcontainer">
+                <div className='notecontainer'>
                     {included ?
-                        <div className="fret" style={{
-                            backgroundColor: backgroundColor,
-                            color: textColor,
-                        }}>
+                        <div className={`note ${fret === scaleState.scaleNum[0] ? 'tonic' : ''}`} >
                             {scaleState.scaleLetOptions[fret]}
                         </div> :
                         ''}
@@ -44,15 +32,15 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
         })
 
         return (
-            <div key={stringIndex} className="string">
+            <div key={stringIndex} className='string'>
                 {fretsDisplay}
             </div>
         )
     })
 
     return (
-        <div className="scale-info__guitar-container">
-            <div className="fretboard">
+        <div className='scaleinfoguitar-container'>
+            <div className='scaleinfoguitar-fretboard'>
                 {fretboardDisplay}
             </div>
         </div>

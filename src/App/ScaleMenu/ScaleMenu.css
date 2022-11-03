@@ -1,0 +1,79 @@
+.scalemenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: var(--background2);
+    padding: 30px;
+    border-radius: 15px;
+    user-select: none;
+}
+@media only screen and (max-width: 600px) {
+    .scale-menu {
+        gap: 10px;
+    }
+}
+
+    .scalemenu-row {
+        display: flex;
+        gap: 20px;
+        font-size: 25px;
+    }
+    @media only screen and (max-width: 600px) {
+        .scalemenu-row {
+            flex-direction: column;
+            align-items: center;
+            justify-items: flex-start;
+            min-height: fit-content;
+            text-align: center;
+        }
+    }
+    
+        .scalemenu-row > .jcheckbox-container {
+            margin: 4px;
+        }
+        @media only screen and (max-width: 600px) {
+            .scalemenu-row > .jcheckbox-container {
+                margin-bottom: 45px;
+            }
+        }
+
+        .scalemenu-row > .jselect-container.scale {
+            width: 70px;
+            height: fit-content;
+        }
+        @media only screen and (max-width: 600px) {
+            .scalemenu-row > .jselect-container.scale {
+                display: flex;
+                justify-content: center;
+                z-index: 1;
+                margin-top: 10px;
+                text-align: left;
+                width: auto;
+                height: auto;
+            }
+        }
+
+        .scalemenu-row > .jselect-container.mode {
+            width: 180px; 
+            margin-left: 20px;
+        }
+        @media only screen and (max-width: 600px) {
+            .scalemenu-row > .jselect-container.mode {
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+                text-align: left;
+                width: auto;
+                height: auto;
+                margin-left: 0;
+            }    
+        }
+
+
+
+
