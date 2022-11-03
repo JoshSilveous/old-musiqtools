@@ -176,8 +176,8 @@ export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover
                     >
                         <DropDownArrow style={{
                             transition: 'transform 500ms ease',
-                            transform: dropDownOpen ? '' : 'rotate(-180deg)'
-
+                            transform: dropDownOpen ? '' : 'rotate(-180deg)',
+                            flexShrink: 0
                         }} fill="currentColor" />
                     </div>
                 </div>
@@ -266,7 +266,7 @@ export function JCheckbox({ defaultState, primaryColor, primaryColorHover, backg
             <div style={{
                 display: 'flex'
             }}>
-                <CheckmarkActive style={{ stroke: backgroundColor, display: isChecked ? 'block' : 'none' }} />
+                <CheckmarkActive style={{ stroke: backgroundColor, display: isChecked ? 'flex' : 'none', flexShrink: 0 }} />
             </div>
         </div>
     )
