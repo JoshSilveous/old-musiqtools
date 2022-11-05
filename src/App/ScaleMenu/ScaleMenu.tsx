@@ -9,6 +9,9 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
         scaleState.setScaleSettings(prev => {
             return { ...prev, [valueName]: value }
         })
+        scaleState.setHighlightedNotes(
+            [false, false, false, false, false, false, false, false, false, false, false, false]
+        )
     }
 
     return (
@@ -21,7 +24,7 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
                         primaryColor='var(--accent1)'
                         primaryColorHover='var(--accent1hover)'
                         backgroundColor='var(--background)'
-                        backgroundColorHover='var(--background1)'
+                        backgroundColorHover='var(--background2)'
                         returnFunction={(value: boolean) => updateScaleContext('isSharp', value)}
                     />
                 </div>

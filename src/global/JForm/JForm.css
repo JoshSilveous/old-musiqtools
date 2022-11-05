@@ -1,11 +1,11 @@
-.JForm__buttonstyle {
+.jform-button {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     white-space: nowrap;
 }
 
-.JForm__menustyle {
+.jselect {
     height: min-content;
     font-weight: 700;
     font-size: 20px;
@@ -21,28 +21,28 @@
     
     box-shadow: 0 0 0 0px var(--background);
 }
-.JForm__menustyle:focus {
+.jselect:focus {
     outline: none !important;
     box-shadow: 0 0 0 5px var(--background);
 }
 
-.JForm__Checkbox {
+.jcheckbox {
     width: 14px;
     height: 14px;
     display: flex;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     border: solid 6px;
     box-shadow: 0 0 0 0px var(--background);
 }
 
-.JForm__Checkbox:focus {
+.jcheckbox:focus {
     outline: none !important;
     box-shadow: 0 0 0 5px var(--background);
 }
 
-.JForm__DropDownArrow-mobile {
+.jselect-arrow-mobile {
     height: 25px;
     position: relative;
     left: 234px;
@@ -51,7 +51,7 @@
     pointer-events: none;
 }
 
-.JForm__DropDownArrow-desktop {
+.jselect-arrow-desktop {
     height: 15px;
     display: flex;
     justify-self: left;
@@ -59,29 +59,29 @@
     margin-left: auto;
 }
 
-.JForm-mobile {
+.jselect.mobile {
     display: none;
 }
-.JForm-desktop {
+.jselect.desktop {
     display: block;
 }
 
 /* Looks really weird on IOS*/
 @media screen and (max-width: 600px) {
-    .JForm__menustyle {
+    .jselect {
         position: relative;
         width: 275px;
         height: 50px;
         border-radius: 50px;
         font-size: 25px;
     }
-    .JForm-mobile {
+    .jselect.mobile {
         display: block;
     }
-    .JForm-desktop {
+    .jselect.desktop {
         display: none;
     }
-    .JForm__Checkbox {
+    .jcheckbox {
         width: 20px;
         height: 20px;
         border-radius: 8px;

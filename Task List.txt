@@ -2,7 +2,9 @@ FOCUS: Just get things working.
 
 > usePopup hook
 
-> remove theme context (**JForm components to string CSS props)
+> Add settings wrench next to open string notes to change tuning
+
+> Make open strings always show, dimly if not in scale
 
 > consolidate CSS
         - seperate files for components

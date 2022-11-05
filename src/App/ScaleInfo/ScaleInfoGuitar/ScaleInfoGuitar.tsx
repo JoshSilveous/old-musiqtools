@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScaleStatePropsType } from '../../../global/Types';
+import React from 'react'
+import { ScaleStatePropsType } from '../../../global/Types'
 import './ScaleInfoGuitar.css'
 export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
@@ -20,10 +20,28 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
         const fretsDisplay = string.map((fret, fretIndex) => {
             const included = scaleState.scaleNum.includes(fret)
 
+            function detectHighlighted(fret: number): boolean {
+                let anyHighlighted = false
+                scaleState.highlightedNotes.forEach(item => {
+                    if (item) { anyHighlighted = true }
+                })
+                if (!anyHighlighted) { return true }
+                return scaleState.highlightedNotes[fret]
+            }
+
             return (
                 <div className='notecontainer'>
                     {included ?
-                        <div className={`note ${fret === scaleState.scaleNum[0] ? 'tonic' : ''}`} >
+                        <div
+                            className={`note ${fret === scaleState.scaleNum[0] ? 'tonic' : ''}`}
+                            style={{
+                                opacity: detectHighlighted(fret) ? '100%' : '30%'
+                            }}
+                            onClick={() => scaleState.setHighlightedNotes(prev => {
+                                prev[fret] = !prev[fret]
+                                return [...prev]
+                            })}
+                        >
                             {scaleState.scaleLetOptions[fret]}
                         </div> :
                         ''}

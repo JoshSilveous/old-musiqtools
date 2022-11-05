@@ -1,6 +1,6 @@
 import { ScaleStatePropsType } from '../../../global/Types'
 import { generateMajor7Chord, generateMinor7Chord, generateDiminishedChord, toRomanNumeral } from './ScaleInfoChords_Functions'
-import React from 'react';
+import React from 'react'
 import './ScaleInfoChords.css'
 
 function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
@@ -84,12 +84,12 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
                                 style={{ backgroundColor: scaleState.highlightedNotes[item] ? 'var(--background3)' : '' }}
                                 onClick={handleClick}
                             >
-                                {scaleState.scaleLetOptions[item]}
+                                <span>{scaleState.scaleLetOptions[item]}</span>
                             </div>)
                     })
                     }
                 </div>
-                {index != modeFormula.length - 1 && <hr />}
+                {index !== modeFormula.length - 1 && <hr />}
             </>
         )
     })

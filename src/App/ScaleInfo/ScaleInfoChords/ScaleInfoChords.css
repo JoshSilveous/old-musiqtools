@@ -42,7 +42,6 @@
     align-items: center;
     color: var(--accent2);
     border-radius: 50%;
-    cursor: pointer;
 }
 .scaleinfochord-note.seventh.included {
     color: var(--accent1);
@@ -54,8 +53,13 @@
     background: var(--background3);
     box-shadow: inset 0px 0px 0px 3px var(--background);
 }
-.scaleinfochord-note:hover {
-    background: var(--background3);
+.scaleinfochord-note > span {
+    cursor: pointer;
+    transition: scale 0.2s ease;
+    scale: 100%;
+}
+.scaleinfochord-note:hover > span {
+    scale: 120%;
 }
 
 

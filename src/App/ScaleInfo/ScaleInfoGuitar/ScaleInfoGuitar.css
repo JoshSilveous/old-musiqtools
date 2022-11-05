@@ -5,7 +5,8 @@
     align-items: center;
     font-size: 22px;
     font-weight: 700;
-    width: fit-content;
+    width: 95%;
+    max-width: fit-content;
     border-radius: 20px;
     background-color: var(--background2);
     padding: 10px 20px;
@@ -13,6 +14,7 @@
 
 .scaleinfoguitar-fretboard {
     margin-top: 20px;
+    width: 100%;
     user-select: none;
 }
 
@@ -73,6 +75,14 @@
     border: solid 3px var(--text);
     background-color: var(--background3);
     color: var(--text);
+    transition: scale 0.2s ease;
+    cursor: pointer;
+    scale: 100%;
+    z-index: 0;
+}
+.note:hover {
+    scale: 120%;
+    z-index: 1;
 }
 
 .note.tonic {

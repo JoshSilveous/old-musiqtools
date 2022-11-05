@@ -5,10 +5,7 @@ import { ReactComponent as CheckmarkActive } from '../../assets/checkbox_active.
 import { JCheckboxProps, JSelectProps } from './JForm_Types'
 
 
-
-
 export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover, textColor, textColorHover, width, returnFunction }: JSelectProps) {
-
 
     // States
     const [currentOption, setCurrentOption] = React.useState(defaultIndex)
@@ -128,9 +125,9 @@ export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover
     }, [])
     return (
         <>
-            <div className="JForm-mobile" style={{ color: textColor }}>
+            <div className="jselect mobile" style={{ color: textColor }}>
                 <select
-                    className="JForm__menustyle JForm-mobile"
+                    className="jselect"
                     defaultValue={defaultIndex}
                     onChange={selectSetCurrentOption}
                     style={{
@@ -146,7 +143,7 @@ export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover
                 </select>
                 <DropDownArrow
                     fill="currentColor"
-                    className="JForm__DropDownArrow-mobile"
+                    className="jselect-arrow-mobile"
                     style={{
                         transform: dropDownOpen ? '' : 'rotate(-180deg)'
                     }}
@@ -158,21 +155,21 @@ export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover
             <div
                 tabIndex={0}
                 ref={divRef}
-                className='JForm__menustyle JForm-desktop'
+                className='jselect desktop'
                 style={menustyle}
                 onMouseEnter={onHover}
                 onMouseLeave={onHoverExit}
                 onClick={toggleDropDown}
             >
                 <div
-                    className='JForm__buttonstyle'
+                    className='jform-button'
                     style={{
                         width: width
                     }}
                 >
                     {options[currentOption]}
                     <div
-                        className="JForm__DropDownArrow-desktop"
+                        className="jselect-arrow-desktop"
                     >
                         <DropDownArrow style={{
                             transition: 'transform 500ms ease',
@@ -226,7 +223,7 @@ export function JCheckbox({ defaultState, primaryColor, primaryColorHover, backg
 
     const checkboxStyle: React.CSSProperties = {
         backgroundColor: determineBackgroundColor(),
-        borderColor: isHovered ? primaryColorHover : primaryColor, // There's a weird delay, I should re-do the hover logic so that the whole box highlights on hover
+        borderColor: isHovered ? primaryColorHover : primaryColor
     }
 
     function onHover() {
@@ -258,7 +255,7 @@ export function JCheckbox({ defaultState, primaryColor, primaryColorHover, backg
             tabIndex={0}
             ref={divRef}
             style={checkboxStyle}
-            className="JForm__Checkbox"
+            className="jcheckbox"
             onMouseEnter={onHover}
             onMouseLeave={onHoverExit}
             onClick={() => setIsChecked(prev => !prev)}
@@ -266,7 +263,13 @@ export function JCheckbox({ defaultState, primaryColor, primaryColorHover, backg
             <div style={{
                 display: 'flex'
             }}>
-                <CheckmarkActive style={{ stroke: backgroundColor, display: isChecked ? 'flex' : 'none', flexShrink: 0 }} />
+                <CheckmarkActive style={{
+                    stroke: isHovered ? backgroundColorHover : backgroundColor,
+                    flexShrink: 0,
+                    display: 'flex',
+                    transition: 'stroke 0.2s ease, opacity 0.2s ease',
+                    opacity: isChecked ? '100%' : '0%',
+                }} />
             </div>
         </div>
     )
