@@ -6,10 +6,7 @@ FOCUS: Just get things working.
 
 > Make open strings always show, dimly if not in scale
 
-> consolidate CSS
-        - seperate files for components
-        - all media queries in same files
-        - use common classes for repetitive attributes
+> Fix cursor on chords notes
 
 > Make elements modular
         - Add/remove components
