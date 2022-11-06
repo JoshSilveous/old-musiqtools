@@ -63,7 +63,7 @@
 }   /*  Last vertical row  */
 
 
-.note {
+.notecontainer > .note {
     transform: translateY(-20px);
     border-radius: 50%;
     display: flex;
@@ -80,12 +80,12 @@
     scale: 100%;
     z-index: 0;
 }
-.note:hover {
+.notecontainer > .note:hover {
     scale: 120%;
     z-index: 1;
 }
 
-.note.tonic {
+.notecontainer > .note.tonic {
     background-color: var(--accent1);
     color: var(--background2);
 }
