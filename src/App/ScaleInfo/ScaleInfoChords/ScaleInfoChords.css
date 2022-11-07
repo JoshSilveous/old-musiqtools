@@ -32,6 +32,7 @@
     overflow: auto;
     font-size: 26px;
 }
+
 .scaleinfochord-note {
     flex-shrink: 0;
     padding: 5px;
@@ -41,7 +42,7 @@
     justify-content: center;
     align-items: center;
     color: var(--accent2);
-    border-radius: 50%;
+    border-radius: 5%;
 }
 .scaleinfochord-note.seventh.included {
     color: var(--accent1);
@@ -69,13 +70,31 @@
     flex-shrink: 0;
     width: 50px;
 }
+
 .scaleinfochord-label {
     width: 200px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: '-';
     min-width: 60px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
 }
+.scaleinfochord-label.highlighted {
+    background: var(--background3);
+    box-shadow: inset 0px 0px 0px 3px var(--background);
+}
+.scaleinfochord-label > span {
+    display:inline-block;
+    scale: 100%;
+    transition: scale 0.2s ease;
+}
+.scaleinfochord-label:hover > span {
+    scale: 110%;
+}
+/*     inline-block allows proper scaling, but messes up the overflow: hidden.
+        maybe wrap the span (overflow: hidden...) around a div?? */
 
 /* To prevent overflow from looking weird on really small screens*/
 @media screen and (max-width: 400px) {

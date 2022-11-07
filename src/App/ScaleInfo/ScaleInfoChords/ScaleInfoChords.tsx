@@ -44,13 +44,11 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
         if (item !== 0) { currentChordRoman = currentChordRoman.toLowerCase() }
         if (item === 2) { currentChordRoman = currentChordRoman + '°' }
 
-
         return (
             <>
                 <div
                     key={index}
                     className='scaleinfochord-chord'
-                    onClick={() => { console.log('test') }}
                 >
                     <div className='scaleinfochord-numeral'>
                         {currentChordRoman}
@@ -58,7 +56,7 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
                     <div
                         className='scaleinfochord-label'
                     >
-                        {scaleState.scaleLet[index]} {chordType}
+                        <span>{scaleState.scaleLet[index]} {chordType}</span>
                     </div>
 
                     {/* Maps over each item in the chord */}
