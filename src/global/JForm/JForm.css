@@ -1,4 +1,4 @@
-.jform-button {
+.jselect-button {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -64,6 +64,7 @@
 }
 .jselect.desktop {
     display: block;
+    z-index: 1;
 }
 
 /* Looks really weird on IOS*/

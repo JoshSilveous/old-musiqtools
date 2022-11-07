@@ -162,7 +162,7 @@ export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover
                 onClick={toggleDropDown}
             >
                 <div
-                    className='jform-button'
+                    className='jselect-button'
                     style={{
                         width: width
                     }}
