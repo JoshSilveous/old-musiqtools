@@ -44,13 +44,26 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
         if (item !== 0) { currentChordRoman = currentChordRoman.toLowerCase() }
         if (item === 2) { currentChordRoman = currentChordRoman + '°' }
 
+        function highlightChord() {
+            let chordNo7 = [chord[0], chord[1], chord[2]]
+            let newHighlightedNotes = []
+            for (let i = 0; i < 12; i++) {
+                newHighlightedNotes[i] = chord.includes(i) ? true : false
+            }
+
+            scaleState.setHighlightedNotes(newHighlightedNotes)
+        }
+
         return (
             <>
                 <div
                     key={index}
                     className='scaleinfochord-chord'
                 >
-                    <div className="scaleinfochord-chordinfo">
+                    <div
+                        className="scaleinfochord-chordinfo"
+                        onClick={highlightChord}
+                    >
                         <div className='scaleinfochord-numeral'>
                             <div>
                                 <span>{currentChordRoman}</span>
