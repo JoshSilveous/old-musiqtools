@@ -27,7 +27,6 @@
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    gap: 10px;
     width: 100%;
     overflow: auto;
     font-size: 26px;
@@ -43,6 +42,7 @@
     align-items: center;
     color: var(--accent2);
     border-radius: 5%;
+    margin-left: 10px;
 }
 .scaleinfochord-note.seventh.included {
     color: var(--accent1);
@@ -69,13 +69,12 @@
 .scaleinfochord-numeral {
     flex-shrink: 0;
     width: 50px;
+    cursor: pointer;
+    padding-right: 10px;
 }
 
 .scaleinfochord-label {
     width: 200px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: '-';
     min-width: 60px;
     padding: 8px;
     border-radius: 5px;
@@ -85,16 +84,30 @@
     background: var(--background3);
     box-shadow: inset 0px 0px 0px 3px var(--background);
 }
-.scaleinfochord-label > span {
-    display:inline-block;
+
+.scaleinfochord-label > div, 
+.scaleinfochord-numeral > div {
+    max-width: fit-content;
+    min-width: inherit;
     scale: 100%;
     transition: scale 0.2s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: '-';
 }
-.scaleinfochord-label:hover > span {
+
+.scaleinfochord-label > div > span, 
+.scaleinfochord-numeral > div > span {
+    display: inline;
+}
+
+.scaleinfochord-chordinfo {
+    display: contents;
+}
+.scaleinfochord-chordinfo:hover > .scaleinfochord-label > div,
+.scaleinfochord-chordinfo:hover > .scaleinfochord-numeral > div {
     scale: 110%;
 }
-/*     inline-block allows proper scaling, but messes up the overflow: hidden.
-        maybe wrap the span (overflow: hidden...) around a div?? */
 
 /* To prevent overflow from looking weird on really small screens*/
 @media screen and (max-width: 400px) {

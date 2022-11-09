@@ -50,13 +50,19 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
                     key={index}
                     className='scaleinfochord-chord'
                 >
-                    <div className='scaleinfochord-numeral'>
-                        {currentChordRoman}
-                    </div>
-                    <div
-                        className='scaleinfochord-label'
-                    >
-                        <span>{scaleState.scaleLet[index]} {chordType}</span>
+                    <div className="scaleinfochord-chordinfo">
+                        <div className='scaleinfochord-numeral'>
+                            <div>
+                                <span>{currentChordRoman}</span>
+                            </div>
+                        </div>
+                        <div
+                            className='scaleinfochord-label'
+                        >
+                            <div>
+                                <span>{scaleState.scaleLet[index]} {chordType}</span>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Maps over each item in the chord */}
