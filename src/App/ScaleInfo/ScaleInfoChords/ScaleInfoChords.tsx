@@ -45,14 +45,14 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
         if (item === 2) { currentChordRoman = currentChordRoman + '°' }
 
         function highlightChord() {
-            let chordNo7 = [chord[0], chord[1], chord[2]]
             let newHighlightedNotes = []
             for (let i = 0; i < 12; i++) {
-                newHighlightedNotes[i] = chord.includes(i) ? true : false
+                newHighlightedNotes[i] = chord.slice(0, 3).includes(i)
             }
 
             scaleState.setHighlightedNotes(newHighlightedNotes)
         }
+
 
         return (
             <>
