@@ -138,6 +138,7 @@ export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover
                     id="cars"
                     onFocus={() => setDropDownOpen(true)}
                     onBlur={() => setDropDownOpen(false)}
+                    value={currentOption}
                 >
                     {mobileOptionElements}
                 </select>

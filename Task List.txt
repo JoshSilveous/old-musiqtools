@@ -6,9 +6,12 @@ FOCUS: Just get things working.
 
 > Make open strings always show, dimly if not in scale
 
-> Fix cursor on chords notes
+> min-size and overflow for guitar
 
-> Make elements modular
+> ScaleInfoScale min-size for containers
+
+
+-- > Make elements modular
         - Add/remove components
             Guitar, Piano, Saxaphone, etc.
         - Allow to reorder via drag / dropping
