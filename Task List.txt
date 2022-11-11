@@ -4,8 +4,6 @@ FOCUS: Just get things working.
 
 > Add settings wrench next to open string notes to change tuning
 
-> Make open strings always show, dimly if not in scale
-
 > min-size and overflow for guitar
 
 > ScaleInfoScale min-size for containers

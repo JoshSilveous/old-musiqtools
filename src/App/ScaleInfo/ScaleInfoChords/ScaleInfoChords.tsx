@@ -50,7 +50,19 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
                 newHighlightedNotes[i] = chord.slice(0, 3).includes(i)
             }
 
-            scaleState.setHighlightedNotes(newHighlightedNotes)
+            // detects if onClick causes any different
+            let changeOccurs = false
+            newHighlightedNotes.forEach((item, index) => {
+                if (item !== scaleState.highlightedNotes[index]) { changeOccurs = true }
+            })
+
+            if (changeOccurs) {
+                scaleState.setHighlightedNotes(newHighlightedNotes)
+            } else {
+                scaleState.setHighlightedNotes(
+                    [false, false, false, false, false, false, false, false, false, false, false, false]
+                )
+            }
         }
 
 
