@@ -53,20 +53,20 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
 
             // detects if onClick causes any different
             let changeOccurs = false
-            newHighlightedNotes.forEach((item, index) => {
-                if (item !== scaleState.highlightedNotes[index]) { changeOccurs = true }
+            newHighlightedNotes.forEach((highlightThis, highlightThisIndex) => {
+                if (highlightThis !== scaleState.highlightedNotes[highlightThisIndex]) { changeOccurs = true }
             })
 
             if (changeOccurs) {
                 scaleState.setHighlightedNotes(newHighlightedNotes)
             } else {
-                scaleState.setHighlightedNotes(prev => prev.map(item => false))
+                scaleState.setHighlightedNotes(prev => prev.map(isHighlighted => false))
             }
         }
 
 
         return (
-            <div className='scaleinfochord-container' key={chordTypeValueIndex}>
+            <React.Fragment key={chordTypeValueIndex}>
                 <div
                     className='scaleinfochord-chord'
                 >
@@ -117,11 +117,15 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
                     }
                 </div>
                 {chordTypeValueIndex !== modeFormula.length - 1 && <hr />}
-            </div>
+            </React.Fragment>
         )
     })
 
-    return (<>{chords}</>)
+    return (
+        <div className='scaleinfochord-container'>
+            {chords}
+        </div>
+    )
 }
 
 export default ScaleInfoChords
