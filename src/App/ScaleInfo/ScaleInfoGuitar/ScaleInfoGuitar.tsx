@@ -31,7 +31,7 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
                 return scaleState.highlightedNotes[fret]
             }
             return (
-                <div className='notecontainer'>
+                <div className='notecontainer' key={fretIndex}>
 
                     {included &&
                         <div

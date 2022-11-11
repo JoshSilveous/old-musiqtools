@@ -128,7 +128,6 @@ export function JSelect({ options, defaultIndex, primaryColor, primaryColorHover
             <div className="jselect mobile" style={{ color: textColor }}>
                 <select
                     className="jselect"
-                    defaultValue={defaultIndex}
                     onChange={selectSetCurrentOption}
                     style={{
                         backgroundColor: primaryColor,

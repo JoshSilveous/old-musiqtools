@@ -17,7 +17,6 @@ export default function useScale(): UseScaleType {
     scaleNum.forEach(scaleNumber => {
         scaleLet.push(scaleLetOptions[scaleNumber])
     })
-
     const [highlightedNotes, setHighlightedNotes] = useState([false, false, false, false, false, false, false, false, false, false, false, false])
 
     return ({

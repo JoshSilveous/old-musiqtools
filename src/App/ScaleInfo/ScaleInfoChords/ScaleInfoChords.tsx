@@ -18,31 +18,32 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
         case 5: modeFormula = [1, 2, 0, 1, 1, 0, 0]; break
         case 6: modeFormula = [2, 0, 1, 1, 0, 0, 1]; break
     }
-    function highlightThis(index: number) {
+    function highlightThis(indexToHighlight: number) {
         // Maps through current highlightedNotes, finds the one that was selected, and inverts it's value
-        scaleState.setHighlightedNotes(prev => prev.map((item, thisindex) => index === thisindex ? !item : item))
+        scaleState.setHighlightedNotes(prev => prev.map(
+            (isHighlighted, isHighlightedIndex) => indexToHighlight === isHighlightedIndex ? !isHighlighted : isHighlighted))
     }
 
     // Maps over each chord
-    const chords = modeFormula.map((item, index) => {
+    const chords = modeFormula.map((chordTypeValue, chordTypeValueIndex) => {
         let chord: number[] = []
         let chordType: string = ''
-        switch (item) {
+        switch (chordTypeValue) {
             case 0:
-                chord = generateMajor7Chord(scaleState.scaleNum[index])
+                chord = generateMajor7Chord(scaleState.scaleNum[chordTypeValueIndex])
                 chordType = 'Major'
                 break
-            case 1: chord = generateMinor7Chord(scaleState.scaleNum[index])
+            case 1: chord = generateMinor7Chord(scaleState.scaleNum[chordTypeValueIndex])
                 chordType = 'Minor'
                 break
-            case 2: chord = generateDiminishedChord(scaleState.scaleNum[index])
+            case 2: chord = generateDiminishedChord(scaleState.scaleNum[chordTypeValueIndex])
                 chordType = 'Diminished'
                 break
         }
 
-        let currentChordRoman: string = toRomanNumeral(index + 1)
-        if (item !== 0) { currentChordRoman = currentChordRoman.toLowerCase() }
-        if (item === 2) { currentChordRoman = currentChordRoman + '°' }
+        let currentChordRoman: string = toRomanNumeral(chordTypeValueIndex + 1)
+        if (chordTypeValue !== 0) { currentChordRoman = currentChordRoman.toLowerCase() }
+        if (chordTypeValue === 2) { currentChordRoman = currentChordRoman + '°' }
 
         function highlightChord() {
             let newHighlightedNotes = []
@@ -65,9 +66,8 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
 
 
         return (
-            <>
+            <div className='scaleinfochord-container' key={chordTypeValueIndex}>
                 <div
-                    key={index}
                     className='scaleinfochord-chord'
                 >
                     <div
@@ -83,49 +83,45 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
                             className='scaleinfochord-label'
                         >
                             <div>
-                                <span>{scaleState.scaleLet[index]} {chordType}</span>
+                                <span>{scaleState.scaleLet[chordTypeValueIndex]} {chordType}</span>
                             </div>
                         </div>
                     </div>
 
-                    {/* Maps over each item in the chord */}
-                    {chord.map((item, index) => {
-                        let itemClassName = ''
+                    {/* Maps over each chordTypeValue in the chord */}
+                    {chord.map((note, noteIndex) => {
+                        let noteClassName = ''
                         let handleClick = () => {
-                            highlightThis(item)
+                            highlightThis(note)
                         }
-                        if (!scaleState.scaleNum.includes(item)) {
-                            itemClassName = 'seventh unincluded'
+                        if (!scaleState.scaleNum.includes(note)) {
+                            noteClassName = 'seventh unincluded'
                             handleClick = () => {
                                 console.log('Not in scale!')
                             }
                         }
-                        else if (index === 3) {
-                            itemClassName = 'seventh included'
+                        else if (noteIndex === 3) {
+                            noteClassName = 'seventh included'
                         }
-                        let isHighlighted = scaleState.highlightedNotes[item]
+                        let isHighlighted = scaleState.highlightedNotes[note]
                         return (
                             <div
-                                className={`scaleinfochord-note ${itemClassName} ${isHighlighted && 'highlighted'}`}
-                                key={index}
-                                style={{ backgroundColor: scaleState.highlightedNotes[item] ? 'var(--background3)' : '' }}
+                                className={`scaleinfochord-note ${noteClassName} ${isHighlighted && 'highlighted'}`}
+                                key={noteIndex}
+                                style={{ backgroundColor: scaleState.highlightedNotes[note] ? 'var(--background3)' : '' }}
                                 onClick={handleClick}
                             >
-                                <span>{scaleState.scaleLetOptions[item]}</span>
+                                <span>{scaleState.scaleLetOptions[note]}</span>
                             </div>)
                     })
                     }
                 </div>
-                {index !== modeFormula.length - 1 && <hr />}
-            </>
+                {chordTypeValueIndex !== modeFormula.length - 1 && <hr />}
+            </div>
         )
     })
 
-    return (
-        <div className='scaleinfochord-container'>
-            {chords}
-        </div>
-    )
+    return (<>{chords}</>)
 }
 
 export default ScaleInfoChords
