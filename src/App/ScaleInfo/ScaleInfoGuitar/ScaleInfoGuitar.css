@@ -10,6 +10,8 @@
     border-radius: 20px;
     background-color: var(--background2);
     padding: 10px 20px;
+    overflow-x: auto;
+    scrollbar-color: var(--text) var(--background2);
 }
 
 .scaleinfoguitar-fretboard {
@@ -88,5 +90,14 @@
 .notecontainer > .note.tonic {
     background-color: var(--accent1);
     color: var(--background2);
+}
+
+.notecontainer > .note-open {
+    transform: translateY(-20px);
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    align-items: center;
 }
 

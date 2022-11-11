@@ -104,6 +104,8 @@
 .scaleinfochord-chordinfo {
     display: contents;
 }
+
+/* Hover effects for all elements when either one is hovered */
 .scaleinfochord-chordinfo:hover > .scaleinfochord-label > div,
 .scaleinfochord-chordinfo:hover > .scaleinfochord-numeral > div {
     scale: 110%;

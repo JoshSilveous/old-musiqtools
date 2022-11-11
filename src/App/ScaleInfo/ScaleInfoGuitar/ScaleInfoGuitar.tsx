@@ -20,7 +20,9 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
         const fretsDisplay = string.map((fret, fretIndex) => {
             const included = scaleState.scaleNum.includes(fret)
 
-            function detectHighlighted(fret: number): boolean {
+
+
+            function detectIfAnyHighlighted(fret: number): boolean {
                 let anyHighlighted = false
                 scaleState.highlightedNotes.forEach(item => {
                     if (item) { anyHighlighted = true }
@@ -28,14 +30,14 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
                 if (!anyHighlighted) { return true }
                 return scaleState.highlightedNotes[fret]
             }
-
             return (
                 <div className='notecontainer'>
-                    {included ?
+
+                    {included &&
                         <div
                             className={`note ${fret === scaleState.scaleNum[0] ? 'tonic' : ''}`}
                             style={{
-                                opacity: detectHighlighted(fret) ? '100%' : '30%'
+                                opacity: detectIfAnyHighlighted(fret) ? '100%' : '30%'
                             }}
                             onClick={() => scaleState.setHighlightedNotes(prev => {
                                 prev[fret] = !prev[fret]
@@ -43,8 +45,16 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
                             })}
                         >
                             {scaleState.scaleLetOptions[fret]}
-                        </div> :
-                        ''}
+                        </div>}
+
+                    {/* gap to prevent distortions when scaling down */}
+                    {!included && fretIndex !== 0 && <div style={{ width: '40px' }} />}
+
+                    {/* show open string notes that aren't in scale */}
+                    {!included && fretIndex === 0 &&
+                        <div className="note-open">
+                            {scaleState.scaleLetOptions[fret]}
+                        </div>}
                 </div>
             )
         })

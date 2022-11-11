@@ -10,6 +10,7 @@ FOCUS: Just get things working.
 
 > ScaleInfoScale min-size for containers
 
+> different colors for significant notes in modes - ScaleInfoGuitar
 
 -- > Make elements modular
         - Add/remove components
