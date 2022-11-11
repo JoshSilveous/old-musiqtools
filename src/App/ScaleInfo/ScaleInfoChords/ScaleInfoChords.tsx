@@ -59,9 +59,7 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
             if (changeOccurs) {
                 scaleState.setHighlightedNotes(newHighlightedNotes)
             } else {
-                scaleState.setHighlightedNotes(
-                    [false, false, false, false, false, false, false, false, false, false, false, false]
-                )
+                scaleState.setHighlightedNotes(prev => prev.map(item => false))
             }
         }
 
