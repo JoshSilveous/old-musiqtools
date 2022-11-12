@@ -30,7 +30,17 @@
     justify-content: center;
     height: 40px;
     align-items: center;
+    cursor: pointer;
 
+}
+
+.notecontainer > .settings > svg {
+    height: 15px;
+    scale: 100%;
+    transition: scale 0.2s ease;
+}
+.notecontainer > .settings:hover > svg {
+    scale: 120%;
 }
 
 .scaleinfoguitar-fretboard > .string:first-child > .notecontainer {
@@ -49,7 +59,7 @@
     transform: translateY(-21.5px);
 }
 .scaleinfoguitar-fretboard > .string:last-child > .notecontainer > .settings {
-    transform:translate(-10px,-21.5px);
+    transform: translate(-10px,-21.5px);
 }
 
 .scaleinfoguitar-fretboard > .string:first-child > .notecontainer:first-child {

@@ -1,6 +1,8 @@
 import React from 'react'
 import { ScaleStatePropsType } from '../../../global/Types'
+import { ReactComponent as SettingsWrench } from '../../../assets/wrench.svg'
 import './ScaleInfoGuitar.css'
+
 export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
 
@@ -32,7 +34,9 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
             }
             return (
                 <div className='notecontainer' key={fretIndex}>
-                    {fretIndex === 0 && <div className="settings">?</div>}
+
+                    {/* settings wrench */}
+                    {fretIndex === 0 && <div className="settings"><SettingsWrench fill="currentColor" /></div>}
                     {included &&
                         <div
                             className={`note ${fret === scaleState.scaleNum[0] ? 'tonic' : ''}`}
