@@ -24,15 +24,33 @@
     display: flex;
 }
 
+.notecontainer > .settings {
+    transform:translate(-10px,-20px);
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    align-items: center;
+
+}
 
 .scaleinfoguitar-fretboard > .string:first-child > .notecontainer {
     border-top: solid 4px var(--text);
 }   /*  All notecontainers on the top string  */
 
-.scaleinfoguitar-fretboard > .string:last-child > * {
-    border: none;
-    border-top: solid 2px var(--text);
+.scaleinfoguitar-fretboard > .string:nth-last-child(2) > .notecontainer {
+    border-bottom-width: 4px;
+}
+
+.scaleinfoguitar-fretboard > .string:last-child > .notecontainer {
+    border-color: transparent;
 }   /*  All notecontainers on the bottom string  */
+
+.scaleinfoguitar-fretboard > .string:last-child > .notecontainer > .note {
+    transform: translateY(-21.5px);
+}
+.scaleinfoguitar-fretboard > .string:last-child > .notecontainer > .settings {
+    transform:translate(-10px,-21.5px);
+}
 
 .scaleinfoguitar-fretboard > .string:first-child > .notecontainer:first-child {
     border-top: solid 5px var(--background2);
@@ -47,7 +65,6 @@
     width: 70px;
     display: flex;
     justify-content: center;
-    box-sizing: border-box;
     border: solid 2px var(--text);
 }
 

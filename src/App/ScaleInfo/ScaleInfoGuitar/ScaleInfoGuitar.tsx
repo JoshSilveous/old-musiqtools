@@ -32,7 +32,7 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
             }
             return (
                 <div className='notecontainer' key={fretIndex}>
-
+                    {fretIndex === 0 && <div className="settings">?</div>}
                     {included &&
                         <div
                             className={`note ${fret === scaleState.scaleNum[0] ? 'tonic' : ''}`}
@@ -48,7 +48,7 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
                         </div>}
 
                     {/* gap to prevent distortions when scaling down */}
-                    {!included && fretIndex !== 0 && <div style={{ width: '40px' }} />}
+                    {!included && <div style={{ width: '40px' }} />}
 
                     {/* show open string notes that aren't in scale */}
                     {!included && fretIndex === 0 &&
