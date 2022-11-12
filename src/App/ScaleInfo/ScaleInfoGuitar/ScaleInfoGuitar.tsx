@@ -2,9 +2,12 @@ import React from 'react'
 import { ScaleStatePropsType } from '../../../global/Types'
 import { ReactComponent as SettingsWrench } from '../../../assets/wrench.svg'
 import './ScaleInfoGuitar.css'
+import { usePopup } from '../../../global/usePopup/usePopup'
 
 export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
+    const popupWrenchMenu = usePopup()
+    console.log(popupWrenchMenu)
 
     const tonicNoteArray = [8, 3, 11, 6, 1, 8]
     const noteArray = tonicNoteArray.map(item => {
@@ -32,11 +35,17 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
                 if (!anyHighlighted) { return true }
                 return scaleState.highlightedNotes[fret]
             }
+
             return (
                 <div className='notecontainer' key={fretIndex}>
 
                     {/* settings wrench */}
-                    {fretIndex === 0 && <div className="settings"><SettingsWrench fill="currentColor" /></div>}
+                    {fretIndex === 0 &&
+                        <div className="settings" onClick={popupWrenchMenu.trigger}>
+                            <SettingsWrench fill="currentColor" />
+                        </div>
+                    }
+
                     {included &&
                         <div
                             className={`note ${fret === scaleState.scaleNum[0] ? 'tonic' : ''}`}
