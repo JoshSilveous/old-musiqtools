@@ -10,7 +10,6 @@ FOCUS: Just get things working.
 
 > different colors for significant notes in modes - ScaleInfoGuitar
 
-> Fix Guitar scaling when some open strings aren't in scale
 
 -- > Make elements modular
         - Add/remove components

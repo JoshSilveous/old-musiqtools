@@ -61,7 +61,7 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
                         </div>}
 
                     {/* gap to prevent distortions when scaling down */}
-                    {!included && <div style={{ width: '40px' }} />}
+                    {!included && fretIndex !== 0 && <div style={{ width: '40px' }} />}
 
                     {/* show open string notes that aren't in scale */}
                     {!included && fretIndex === 0 &&
