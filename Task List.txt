@@ -10,6 +10,7 @@ FOCUS: Just get things working.
 
 > different colors for significant notes in modes - ScaleInfoGuitar
 
+> Add numbers for frets
 
 -- > Make elements modular
         - Add/remove components
