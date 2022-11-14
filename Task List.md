@@ -2,11 +2,14 @@ FOCUS: Just get things working.
 
 
 ## Features
-> Guitar Fretboard Visualizer
+> ScaleInfoGuitar
         > Add numbers below frets
         > Highlight 'significant notes' to fretboard
         > Popup to change Tuning (see usePopup)
+        > Fix overflow on right side when zoomed
 
+> ScaleInfoScale
+        > Add numbers for chords
 
 > Create `usePopup` hook
         A hook that allows me to define a contents parameter (some JSX).
