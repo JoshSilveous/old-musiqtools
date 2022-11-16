@@ -6,7 +6,7 @@ FOCUS: Just get things working.
         > Add numbers below frets
         > Highlight 'significant notes' to fretboard
         > Popup to change Tuning (see usePopup)
-        > Fix overflow on right side when zoomed
+        ✔ Fix overflow on right side when zoomed
 
 > ScaleInfoScale
         > Add numbers for chords

@@ -9,19 +9,22 @@
     max-width: fit-content;
     border-radius: 20px;
     background-color: var(--background2);
-    padding: 10px 20px;
-    overflow-x: auto;
-    scrollbar-color: var(--text) var(--background2);
+    padding: 20px 20px;
 }
 
 .scaleinfoguitar-fretboard {
-    margin-top: 20px;
+    scrollbar-color: var(--text) var(--background2);
+    overflow-x: auto;
+    overflow-y: hidden;
     width: 100%;
     user-select: none;
+    height: auto;
+    padding-bottom: 10px;
 }
 
 .scaleinfoguitar-fretboard > .string {
     display: flex;
+    transform: translate(10px, 24px);
 }
 
 .notecontainer > .settings {
