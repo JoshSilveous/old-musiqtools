@@ -20,6 +20,17 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
         return stringNotes
     })
 
+    // define significantNote to pop out
+    let significantNote: number;
+    switch (scaleState.scaleSettings.mode) {
+        case 0: significantNote = 6; break
+        case 1: significantNote = 5; break
+        case 2: significantNote = 1; break
+        case 3: significantNote = 3; break
+        case 4: significantNote = 5; break
+        case 5: significantNote = 6; break
+    }
+
     const fretboardDisplay = noteArray.map((string, stringIndex) => {
 
         const fretsDisplay = string.map((fret, fretIndex) => {
@@ -48,7 +59,10 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
                     {included &&
                         <div
-                            className={`note ${fret === scaleState.scaleNum[0] ? 'tonic' : ''}`}
+                            className={
+                                `note ${fret === scaleState.scaleNum[0] ? 'tonic' :
+                                    fret === scaleState.scaleNum[significantNote] ? 'significant' : ''}`
+                            }
                             style={{
                                 opacity: detectIfAnyHighlighted(fret) ? '100%' : '30%'
                             }}

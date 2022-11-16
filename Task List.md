@@ -4,8 +4,8 @@ FOCUS: Just get things working.
 ## Features
 > ScaleInfoGuitar
         > Add numbers below frets
-        > Highlight 'significant notes' to fretboard
         > Popup to change Tuning (see usePopup)
+        ✔ Highlight 'significant notes' to fretboard
         ✔ Fix overflow on right side when zoomed
 
 > ScaleInfoScale

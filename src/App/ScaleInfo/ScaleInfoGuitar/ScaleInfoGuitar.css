@@ -118,8 +118,19 @@
 }
 
 .notecontainer > .note.tonic {
-    background-color: var(--accent1);
-    color: var(--background2);
+    color: var(--background3);
+    background-color: var(--accent2hover);
+    border-color: var(--accent2);
+}
+
+.notecontainer > .note.significant {
+    /* color: var(--background3);
+    background-color: var(--accent1hover);
+    border-color: var(--accent1); */
+    
+    background-color: var(--text);
+    color: var(--background3);
+
 }
 
 .notecontainer > .note-open {
