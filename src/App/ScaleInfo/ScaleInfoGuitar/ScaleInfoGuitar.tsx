@@ -102,6 +102,7 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
     const fretNumsDisplay = fretNums.map((item, index) => {
         return (
             <div className='notecontainer' key={index}>
+                {index === 0 && <div style={{ width: '15px' }} />}
                 <div className='number'>
                     {item}
                 </div>

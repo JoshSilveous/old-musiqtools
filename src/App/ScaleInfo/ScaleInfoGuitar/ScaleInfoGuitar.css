@@ -64,6 +64,9 @@
 .scaleinfoguitar-fretboard > .string:last-child > .notecontainer {
     border-color: transparent;
     transform: translateY(-20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -123,9 +126,11 @@
 }
 
 .notecontainer > .number {
-    width: 41.2px;
+    width: 40px;
     height: 40px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .notecontainer > .note:hover {
