@@ -20,6 +20,8 @@
     user-select: none;
     height: auto;
     padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .scaleinfoguitar-fretboard > .string {
@@ -50,18 +52,25 @@
     border-top: solid 4px var(--text);
 }   /*  All notecontainers on the top string  */
 
-.scaleinfoguitar-fretboard > .string:nth-last-child(2) > .notecontainer {
+.scaleinfoguitar-fretboard > .string:nth-last-child(3) > .notecontainer {
     border-bottom-width: 4px;
 }
 
-.scaleinfoguitar-fretboard > .string:last-child > .notecontainer {
+.scaleinfoguitar-fretboard > .string:nth-last-child(2) > .notecontainer {
     border-color: transparent;
 }   /*  All notecontainers on the bottom string  */
 
-.scaleinfoguitar-fretboard > .string:last-child > .notecontainer > .note {
+
+.scaleinfoguitar-fretboard > .string:last-child > .notecontainer {
+    border-color: transparent;
+    transform: translateY(-20px);
+}
+
+
+.scaleinfoguitar-fretboard > .string:nth-last-child(2) > .notecontainer > .note {
     transform: translateY(-21.5px);
 }
-.scaleinfoguitar-fretboard > .string:last-child > .notecontainer > .settings {
+.scaleinfoguitar-fretboard > .string:nth-last-child(2) > .notecontainer > .settings {
     transform: translate(-10px,-21.5px);
 }
 
@@ -112,6 +121,13 @@
     scale: 100%;
     z-index: 0;
 }
+
+.notecontainer > .number {
+    width: 41.2px;
+    height: 40px;
+    text-align: center;
+}
+
 .notecontainer > .note:hover {
     scale: 120%;
     z-index: 1;

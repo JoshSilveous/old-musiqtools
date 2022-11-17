@@ -93,10 +93,29 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
         )
     })
 
+    const fretNums: (string | number)[] = ['O'];
+    for (let i = 0; i < 12; i++) {
+        fretNums.push(i + 1)
+    }
+    console.log(fretNums)
+
+    const fretNumsDisplay = fretNums.map((item, index) => {
+        return (
+            <div className='notecontainer' key={index}>
+                <div className='number'>
+                    {item}
+                </div>
+            </div>
+        )
+    })
+
     return (
         <div className='scaleinfoguitar-container'>
             <div className='scaleinfoguitar-fretboard'>
                 {fretboardDisplay}
+                <div className='string'>
+                    {fretNumsDisplay}
+                </div>
             </div>
         </div>
     )
