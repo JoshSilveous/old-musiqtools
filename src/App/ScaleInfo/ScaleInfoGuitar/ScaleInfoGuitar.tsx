@@ -7,7 +7,9 @@ import { usePopup } from '../../../global/usePopup/usePopup'
 export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
     const popupWrenchMenu = usePopup()
-    console.log(popupWrenchMenu)
+
+    popupWrenchMenu.setContent(<div>test</div>)
+
 
     const tonicNoteArray = [8, 3, 11, 6, 1, 8]
     const noteArray = tonicNoteArray.map(item => {
@@ -21,7 +23,7 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
     })
 
     // define significantNote to pop out
-    let significantNote: number;
+    let significantNote: number
     switch (scaleState.scaleSettings.mode) {
         case 0: significantNote = 6; break
         case 1: significantNote = 5; break
@@ -49,7 +51,6 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
             return (
                 <div className='notecontainer' key={fretIndex}>
-
                     {/* settings wrench */}
                     {fretIndex === 0 &&
                         <div className="settings" onClick={popupWrenchMenu.trigger}>
@@ -93,11 +94,10 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
         )
     })
 
-    const fretNums: (string | number)[] = ['O'];
+    const fretNums: (string | number)[] = ['O']
     for (let i = 0; i < 12; i++) {
         fretNums.push(i + 1)
     }
-    console.log(fretNums)
 
     const fretNumsDisplay = fretNums.map((item, index) => {
         return (
@@ -112,6 +112,7 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
     return (
         <div className='scaleinfoguitar-container'>
+            {popupWrenchMenu.popupLocation}
             <div className='scaleinfoguitar-fretboard'>
                 {fretboardDisplay}
                 <div className='string'>
