@@ -8,7 +8,7 @@ export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
     const popupWrenchMenu = usePopup()
 
-    popupWrenchMenu.setContent(<div>test</div>)
+    popupWrenchMenu.setContent(<div>testy<br />testy</div>)
 
 
     const tonicNoteArray = [8, 3, 11, 6, 1, 8]
