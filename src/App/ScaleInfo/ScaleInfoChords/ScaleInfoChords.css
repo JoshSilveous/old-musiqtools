@@ -15,11 +15,12 @@
 
 .scaleinfochord-container > hr {
     background-color: var(--background);
-    height: 3px;
+    height: 4px;
     width: 100%;
     margin: 1px;
     border: 1px solid var(--background);
     box-shadow: none;
+    border-radius: 10px;
 }
 
 .scaleinfochord-chord {
@@ -32,7 +33,7 @@
     font-size: 26px;
 }
 
-.scaleinfochord-note {
+.scaleinfochord-note, .scaleinfochord-desc-note {
     flex-shrink: 0;
     padding: 5px;
     width: 40px;
@@ -44,7 +45,9 @@
     border-radius: 5%;
     margin-left: 10px;
 }
-.scaleinfochord-note.seventh.included {
+
+
+.scaleinfochord-note.seventh.included, .scaleinfochord-desc-note.seventh {
     color: var(--accent1);
 }
 .scaleinfochord-note.seventh.unincluded {
@@ -66,20 +69,25 @@
 }
 
 
-.scaleinfochord-numeral {
+.scaleinfochord-numeral, .scaleinfochord-desc-numeral {
     flex-shrink: 0;
     width: 50px;
-    cursor: pointer;
     padding-right: 10px;
 }
+.scaleinfochord-numeral {
+    cursor: pointer;
+}
 
-.scaleinfochord-label {
+.scaleinfochord-label, .scaleinfochord-desc-label {
     width: 200px;
     min-width: 60px;
     padding: 8px;
     border-radius: 5px;
+}
+.scaleinfochord-label {
     cursor: pointer;
 }
+
 .scaleinfochord-label.highlighted {
     background: var(--background3);
     box-shadow: inset 0px 0px 0px 3px var(--background);
@@ -113,14 +121,16 @@
 
 /* To prevent overflow from looking weird on really small screens*/
 @media screen and (max-width: 400px) {
-    .scaleinfochord-label {
+    .scaleinfochord-label, .scaleinfochord-desc-label {
         display: none;
     }
     .scaleinfochord {
         justify-content: center;
     }
     .scaleinfochord-note, 
-    .scaleinfochord-numeral {
+    .scaleinfochord-desc-note,
+    .scaleinfochord-numeral,
+    .scaleinfochord-desc-numeral {
         flex-shrink: 1;
     }
 }

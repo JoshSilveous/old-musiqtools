@@ -67,6 +67,7 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
 
         return (
             <React.Fragment key={chordTypeValueIndex}>
+                <hr />
                 <div
                     className='scaleinfochord-chord'
                 >
@@ -116,13 +117,30 @@ function ScaleInfoChords({ scaleState }: ScaleStatePropsType) {
                     })
                     }
                 </div>
-                {chordTypeValueIndex !== modeFormula.length - 1 && <hr />}
             </React.Fragment>
         )
     })
 
     return (
         <div className='scaleinfochord-container'>
+            <div className='scaleinfochord-chord'>
+                <div className="scaleinfochord-desc-numeral"></div>
+                <div className='scaleinfochord-desc-label'>
+                    Chord
+                </div>
+                <div className='scaleinfochord-desc-note'>
+                    1<sup>st</sup>
+                </div>
+                <div className='scaleinfochord-desc-note'>
+                    3<sup>rd</sup>
+                </div>
+                <div className='scaleinfochord-desc-note'>
+                    5<sup>th</sup>
+                </div>
+                <div className='scaleinfochord-desc-note seventh'>
+                    7<sup>th</sup>
+                </div>
+            </div>
             {chords}
         </div>
     )
