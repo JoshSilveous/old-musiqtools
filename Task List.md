@@ -12,10 +12,7 @@ FOCUS: Just get things working.
         > Add numbers for chords
 
 > Create `usePopup` hook
-        A hook that allows me to define a contents parameter (some JSX).
-        When hook is called, probably with an onClick, a popup will appear
-        at position of mouse, with content inside.
-        Popup will disappear when user clicks X, or outside of the box.
+        > Make popup change direction when reaching bottom or side of page
 
 ## Bug Fixes
 > Fix iOS display issues
