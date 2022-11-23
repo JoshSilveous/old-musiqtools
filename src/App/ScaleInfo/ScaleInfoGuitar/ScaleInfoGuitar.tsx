@@ -6,9 +6,8 @@ import { usePopup } from '../../../global/usePopup/usePopup'
 
 export default function ScaleInfoGuitar({ scaleState }: ScaleStatePropsType) {
 
-    const popupWrenchMenu = usePopup()
+    const popupWrenchMenu = usePopup(<div>testy<br />testy</div>, { backgroundColor: 'var(--accent2)', color: 'var(--background3' })
 
-    popupWrenchMenu.setContent(<div>testy<br />testy</div>)
 
 
     const tonicNoteArray = [8, 3, 11, 6, 1, 8]

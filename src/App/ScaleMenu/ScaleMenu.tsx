@@ -1,5 +1,6 @@
 import { JSelect, JCheckbox } from '../../global/JForm/JForm'
 import { ScaleStatePropsType } from '../../global/Types'
+import { usePopup } from '../../global/usePopup/usePopup'
 import './ScaleMenu.css'
 
 
@@ -13,10 +14,18 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
 
     }
 
+    const testPopup = usePopup(
+        <div>test Popup!<br />test!<br />testy!</div>,
+        { backgroundColor: 'var(--accent1)', color: 'var(--background3)' }
+    )
+
+
     return (
         <div className='scalemenu'>
+            {testPopup.popupLocation}
             <div className='scalemenu-row'>
                 Display Sharps (#) instead of Flats (b)?
+                <div onClick={testPopup.trigger}>popup</div>
                 <div className='jcheckbox-container'>
                     <JCheckbox
                         defaultState={false}

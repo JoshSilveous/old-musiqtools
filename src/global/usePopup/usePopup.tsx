@@ -2,15 +2,9 @@ import React, { useEffect, useRef, useState } from "react"
 
 
 
-function usePopup() {
+function usePopup(currentContent: JSX.Element, style?: React.CSSProperties, className?: string) {
     // breaking "best naming practice" here because it makes more sense.
     const [popupLocation, setPopupDisplayContent] = useState<JSX.Element[]>([])
-
-    let currentContent: JSX.Element
-
-    function setContent(content: JSX.Element) {
-        currentContent = content
-    }
 
     const containerRef = useRef<HTMLDivElement>(null)
 
@@ -20,22 +14,29 @@ function usePopup() {
         // if content isn't defined, console log an error
         // if not, create a new div at the highest level using coordinates of user's mouse
 
-        const popupStyle: React.CSSProperties = {
+        let popupStyle: React.CSSProperties = {
+            ...style,
             position: 'absolute',
-            left: `${e.pageX}px`,
-            top: `${e.pageY}px`,
             zIndex: '50000',
-            backgroundColor: 'red',
-            // borderRadius: '20px',
             transition: 'width .2s ease, height .2s ease, border-radius .2s ease',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
         }
+
+        window.addEventListener('resize', clearPopup)
+
 
         function clearPopup() {
             setPopupDisplayContent([
                 <div
                     ref={containerRef}
-                    style={{ ...popupStyle, height: '0px', width: '0px', borderRadius: '0px' }}
+                    className={className}
+                    style={{
+                        ...popupStyle,
+                        height: '0px',
+                        width: '0px',
+                        borderRadius: '0px'
+                    }}
                 >
                     <div style={{ padding: '20px' }}>
                         <div onClick={clearPopup}>close</div>
@@ -46,6 +47,7 @@ function usePopup() {
             let timeout = setInterval(() => {
                 setPopupDisplayContent([])
             }, 200)
+            window.removeEventListener('resize', clearPopup)
             clearInterval(timeout)
         }
 
@@ -54,6 +56,7 @@ function usePopup() {
             setPopupDisplayContent([
                 <div
                     ref={containerRef}
+                    className={className}
                     style={{ ...popupStyle, opacity: '0%' }}
                 >
                     <div style={{ padding: '20px' }}>
@@ -63,15 +66,45 @@ function usePopup() {
                 </div>
             ])
             let layer1timeout = setTimeout(() => {
+
                 let popupWidth = containerRef!.current!.clientWidth
                 let popupHeight = containerRef!.current!.clientHeight
-                console.log('width:', popupWidth)
-                console.log('height:', popupHeight)
+                const verticalOverflow = e.pageY + popupHeight > document.body.scrollHeight - 100
+                const horizontalOverflow = e.pageX + popupWidth > document.body.scrollWidth - 100
+
+                function positionPopup() {
+                    if (verticalOverflow) {
+                        popupStyle.top = ''
+                        let offset = window.innerHeight - e.pageY
+                        popupStyle.bottom = offset
+                    }
+                    else {
+                        popupStyle.top = `${e.pageY}px`
+                    }
+
+                    if (horizontalOverflow) {
+                        popupStyle.left = ''
+                        let offset = document.documentElement.clientWidth - e.pageX
+                        popupStyle.right = offset
+                    }
+                    else {
+                        popupStyle.left = `${e.pageX}px`
+                    }
+                }
+                positionPopup()
+
 
                 setPopupDisplayContent([
                     <div
                         ref={containerRef}
-                        style={{ ...popupStyle, opacity: '0%', height: '0px', width: '0px', borderRadius: '0px' }}
+                        className={className}
+                        style={{
+                            ...popupStyle,
+                            opacity: '0%',
+                            height: '0px',
+                            width: '0px',
+                            borderRadius: '0px'
+                        }}
                     >
                         <div style={{ padding: '20px' }}>
                             <div onClick={clearPopup}>close</div>
@@ -84,7 +117,8 @@ function usePopup() {
                     setPopupDisplayContent([
                         <div
                             ref={containerRef}
-                            style={{ ...popupStyle, opacity: '100%', width: `${popupWidth}px`, height: `${popupHeight}px`, borderRadius: '20px' }}
+                            className={className}
+                            style={{ ...popupStyle, ...style, opacity: '100%', width: `${popupWidth}px`, height: `${popupHeight}px`, borderRadius: '20px' }}
                         >
                             <div style={{ padding: '20px' }}>
                                 <div onClick={clearPopup}>close</div>
@@ -101,7 +135,7 @@ function usePopup() {
     }
 
 
-    return ({ trigger, popupLocation, setContent })
+    return ({ trigger, popupLocation })
 }
 
 export { usePopup }
