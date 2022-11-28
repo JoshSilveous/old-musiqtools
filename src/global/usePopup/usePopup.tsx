@@ -13,6 +13,8 @@ function usePopup(currentContent: JSX.Element, style?: React.CSSProperties, clas
     function trigger(e: React.MouseEvent<HTMLElement>) {
         // if content isn't defined, console log an error
         // if not, create a new div at the highest level using coordinates of user's mouse
+        // if user clicks anywhere while window is open, close it
+
 
         let popupStyle: React.CSSProperties = {
             ...style,
@@ -25,8 +27,14 @@ function usePopup(currentContent: JSX.Element, style?: React.CSSProperties, clas
 
         window.addEventListener('resize', clearPopup)
 
+        let timeout3 = setInterval(() => {
+            window.addEventListener('click', clearPopup)
+            console.log('added')
+            clearInterval(timeout3)
+        }, 0)
 
         function clearPopup() {
+            console.log('clearPopup() trigered')
             setPopupDisplayContent([
                 <div
                     ref={containerRef}
@@ -48,6 +56,7 @@ function usePopup(currentContent: JSX.Element, style?: React.CSSProperties, clas
                 setPopupDisplayContent([])
             }, 200)
             window.removeEventListener('resize', clearPopup)
+            window.removeEventListener('click', clearPopup)
             clearInterval(timeout)
         }
 
@@ -67,6 +76,7 @@ function usePopup(currentContent: JSX.Element, style?: React.CSSProperties, clas
             ])
             let layer1timeout = setTimeout(() => {
 
+                // problem: doesn't take into account that user may not be scrolled to the bottom. should use window position
                 let popupWidth = containerRef!.current!.clientWidth
                 let popupHeight = containerRef!.current!.clientHeight
                 const verticalOverflow = e.pageY + popupHeight > document.body.scrollHeight - 100
