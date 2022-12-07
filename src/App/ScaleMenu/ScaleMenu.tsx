@@ -28,7 +28,7 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
                 <div onClick={testPopup.trigger}>popup</div>
                 <div className='jcheckbox-container'>
                     <JCheckbox
-                        defaultState={false}
+                        defaultState={scaleState.scaleSettings.isSharp}
                         primaryColor='var(--accent1)'
                         primaryColorHover='var(--accent1hover)'
                         backgroundColor='var(--background)'
@@ -42,7 +42,7 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
                 <div className='jselect-container scale'>
                     <JSelect
                         options={scaleState.scaleLetOptions}
-                        defaultIndex={4}
+                        defaultIndex={scaleState.scaleSettings.tonic}
                         primaryColor='var(--accent1)'
                         primaryColorHover='var(--accent1hover)'
                         textColor='var(--background)'
@@ -54,7 +54,7 @@ export default function ScaleMenu({ scaleState }: ScaleStatePropsType) {
                 <div className='jselect-container mode'>
                     <JSelect
                         options={scaleState.scaleModeOptions}
-                        defaultIndex={0}
+                        defaultIndex={scaleState.scaleSettings.mode}
                         primaryColor='var(--accent2)'
                         primaryColorHover='var(--accent2hover)'
                         textColor='var(--background)'

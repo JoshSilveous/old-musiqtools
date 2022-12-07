@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { UseScaleType, scaleSettingsType } from "../global/Types"
 
 
@@ -18,6 +18,30 @@ export default function useScale(): UseScaleType {
         scaleLet.push(scaleLetOptions[scaleNumber])
     })
     const [highlightedNotes, setHighlightedNotes] = useState([false, false, false, false, false, false, false, false, false, false, false, false])
+
+
+    useEffect(() => {
+        let savedTonic = localStorage.getItem("current_tonic")
+        let savedMode = localStorage.getItem("current_mode")
+        let savedIsSharp = localStorage.getItem("current_issharp")
+
+        if (savedTonic && savedMode && savedIsSharp) {
+            if (savedIsSharp === "true") {
+                setScaleSettings({ tonic: +savedTonic!, mode: +savedMode!, isSharp: true })
+            } else {
+                setScaleSettings({ tonic: +savedTonic!, mode: +savedMode!, isSharp: false })
+            }
+            console.log("scaleSettings loaded with ", scaleSettings.tonic, scaleSettings.mode, scaleSettings.isSharp)
+        }
+        // eslint-disable-next-line
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("current_tonic", String(scaleSettings.tonic))
+        localStorage.setItem("current_mode", String(scaleSettings.mode))
+        localStorage.setItem("current_issharp", String(scaleSettings.isSharp))
+        console.log("localStorage updated with ", scaleSettings.tonic, scaleSettings.mode, scaleSettings.isSharp)
+    }, [scaleSettings])
 
     return ({
         scaleNum,

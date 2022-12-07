@@ -15,6 +15,9 @@ FOCUS: Just get things working.
         🔲 Make popup change direction when reaching bottom or side of page
         🐞 Reveal direction doesn't take into account a user's scroll position
 
+> useScale
+        🐞 Need to add form control so JForm elements are updated by localStorage
+
 ## Bug Fixes
 🐞 Fix iOS display issues
 🐞 ScaleInfoScale - Chord Name clipping when scaled
