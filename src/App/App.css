@@ -1,14 +1,14 @@
 .app {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
-    min-height: 100vh;
-    padding: 20px;
-    overflow: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 30px;
+	min-height: 100vh;
+	padding: 20px;
+	overflow: auto;
 
-    /* --background: #2c3f43;
+	/* --background: #2c3f43;
     --background2: #6b969e;
     --background3: #a2bec3;
     --text: #faecac;
@@ -17,25 +17,32 @@
     --accent2: #e16853;
     --accent2hover: #f4c6be; */
 
-    --background: #ffd670;
-    --background2: #fffd98;
-    --background3: #ffffcc;
-    --text: #e07046;
-    --accent1: #ff70a6;
-    --accent1hover: #ff98cd;
-    --accent2: #5286d9;
-    --accent2hover: #7aaeff;
+	--background: #ffd670;
+	--background2: #fffd98;
+	--background3: #ffffcc;
+	--text: #e07046;
+	--accent1: #ff70a6;
+	--accent1hover: #ff98cd;
+	--accent2: #5286d9;
+	--accent2hover: #7aaeff;
 
-    background-color: var(--background);
-    color: var(--text);
+	background-color: var(--background);
+	color: var(--text);
 }
 
 @media only screen and (max-width: 600px) {
-    .app {
-        font-size: 22px;
-    }
+	.app {
+		font-size: 22px;
+	}
 }
 
 .tagline {
-    text-align: center;
+	text-align: center;
+}
+.old-note {
+	color: red;
+	text-align: center;
+	background-color: white;
+	border-radius: 10px;
+	padding: 5px;
 }
