@@ -1,6 +1,10 @@
 # old-musiqtools
 
-This is another old project I created around August 2022, while learning React. This is the second iteration of this idea, improving upon the first by implementing React, componetizing the structure of the project, and integrating better styles. The **old** version's GitHub repository can be found [here](github.com/JoshSilveous/old-fretboard-visualizer), and you can access the deployment [here](https://old-fretboard-visualizer.vercel.app/).
+This is another old project I created around August 2022, while learning React. This is the second iteration of this idea, improving upon the first by implementing React, componetizing the structure of the project, and integrating better styles. 
+
+The deployment for this project can be found [here](https://old-musiqtools.vercel.app/).
+
+Also, the **old** version's GitHub repository can be found [here](github.com/JoshSilveous/old-fretboard-visualizer).
 
 **I have abandoned this project.**
 
